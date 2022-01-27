@@ -1,0 +1,12 @@
+{
+    "id": 1234,
+    "type": "Device",
+    "name": "Barcelona-Corcega",
+    "description": null,
+    "owner_id": 1234,
+    "owner_username": "USERNAME",
+    "city": "Barcelona",
+    "url": "http://api.smartcitizen.me/v0/devices/1234",
+    "country_code": "ES",
+    "country": "Spain"
+}

@@ -1,0 +1,386 @@
+[
+    {
+        "id": 1,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "air temperature",
+        "description": "Air temperature is a measure of how hot or cold the air is. It is the most commonly measured weather parameter. Air temperature is dependent on the amount and strength of the sunlight hitting the earth, and atmospheric conditions, such as cloud cover and humidity, which trap heat.",
+        "created_at": "2015-07-03T10:16:10Z",
+        "updated_at": "2015-07-03T10:16:10Z"
+    },
+    {
+        "id": 3,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "light",
+        "description": "Lux is a measure of how much light is spread over a given area. A full moon clear night is around 1 lux, inside an office building you usually have 400 lux and a bright day can be more than 20000 lux.",
+        "created_at": "2015-07-03T10:16:27Z",
+        "updated_at": "2015-07-03T10:16:27Z"
+    },
+    {
+        "id": 7,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "battery",
+        "description": "The SCK remaining battery level in percentage.",
+        "created_at": "2015-07-03T10:16:45Z",
+        "updated_at": "2015-07-03T10:16:45Z"
+    },
+    {
+        "id": 9,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "nets",
+        "description": "The amount of Wi-Fi networks visible by the SCK.",
+        "created_at": "2015-07-03T10:16:54Z",
+        "updated_at": "2015-07-03T10:16:54Z"
+    },
+    {
+        "id": 4,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "noise",
+        "description": "dB's measure sound pressure difference between the average local pressure and the pressure in the sound wave.  A quiet library is below 40dB, your house is around 50dB and a diesel truck in your street 90dB.",
+        "created_at": "2015-07-03T10:16:32Z",
+        "updated_at": "2015-07-03T10:16:32Z"
+    },
+    {
+        "id": 8,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "pv panel",
+        "description": "The SCK's solar panel energy voltage (when connected).",
+        "created_at": "2015-07-03T10:16:49Z",
+        "updated_at": "2015-07-03T10:16:49Z"
+    },
+    {
+        "id": 21,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "dissolved oxygen",
+        "description": "Absolute measure of the concentration of oxygen that is dissolved in Water ",
+        "created_at": "2017-08-04T12:21:28Z",
+        "updated_at": "2017-08-04T12:21:28Z"
+    },
+    {
+        "id": 20,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "specific gravity",
+        "description": "The density of a substance to the density of a reference substance.",
+        "created_at": "2017-08-04T12:21:28Z",
+        "updated_at": "2017-08-04T12:21:28Z"
+    },
+    {
+        "id": 5,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "co",
+        "description": "Carbon monoxide is a colorless, odorless, and tasteless gas. It is a pollutant in some urban areas coming from the exhaust of internal combustion engines  (cars, trucks, ships...)  and incomplete combustion of various other fuels. ⚠ Note: values are offered in RS (sensor resistance in kOhm) as a relative measurement from the R0 (sensor zero resistance), we approximate R0 at 75kOhm.",
+        "created_at": "2015-07-03T10:16:36Z",
+        "updated_at": "2015-07-03T10:16:36Z"
+    },
+    {
+        "id": 6,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "no2",
+        "description": "Nitrogen dioxide is a toxic gas. It is a pollutant in some urban areas due the excess air required for complete combustion of fuels introduces nitrogen into the combustion of internal combustion engines (cars, trucks, ships...) and power stations. ⚠ Note: values are offered in RS (sensor resistance in kOhm) as a relative measurement from the R0 (sensor zero resistance). Due to sensor intra-model variability we recommend using this as a relative measurement within the same kit readings.",
+        "created_at": "2015-07-03T10:16:41Z",
+        "updated_at": "2015-07-03T10:16:41Z"
+    },
+    {
+        "id": 22,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "oxygen saturation",
+        "description": "Relative measure of the concentration of oxygen that is dissolved in Water ",
+        "created_at": "2017-08-04T12:21:28Z",
+        "updated_at": "2017-08-04T12:21:28Z"
+    },
+    {
+        "id": 30,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "Decreasing time",
+        "description": "Relative time in minutes a water tank has been emptying",
+        "created_at": "2018-07-20T10:55:01Z",
+        "updated_at": "2018-07-20T10:55:01Z"
+    },
+    {
+        "id": 12,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "PM",
+        "description": "PM stands for particulate matter: the term for a mixture of solid particles and liquid droplets found in the air. Some particles, such as dust, dirt, soot, or smoke, are large or dark enough to be seen with the naked eye.",
+        "created_at": "2016-07-06T08:20:17Z",
+        "updated_at": "2016-07-06T08:20:17Z"
+    },
+    {
+        "id": 13,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "PM 10",
+        "description": "PM stands for particulate matter: the term for a mixture of solid particles and liquid droplets found in the air. Some particles, such as dust, dirt, soot, or smoke, are large or dark enough to be seen with the naked eye.",
+        "created_at": "2016-07-06T08:20:17Z",
+        "updated_at": "2016-07-06T08:20:17Z"
+    },
+    {
+        "id": 14,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "PM 2.5",
+        "description": "PM stands for particulate matter: the term for a mixture of solid particles and liquid droplets found in the air. Some particles, such as dust, dirt, soot, or smoke, are large or dark enough to be seen with the naked eye.",
+        "created_at": "2016-07-06T08:20:17Z",
+        "updated_at": "2016-07-06T08:20:17Z"
+    },
+    {
+        "id": 2,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "humidity",
+        "description": "Relative humidity is a measure of the amount of moisture in the air relative to the total amount of moisture the air can hold. For instance, if the relative humidity was 50%, then the air is only half saturated with moisture.",
+        "created_at": "2015-07-03T10:16:23Z",
+        "updated_at": "2015-07-03T10:16:23Z"
+    },
+    {
+        "id": 27,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "PM 1",
+        "description": "PM stands for particulate matter: the term for a mixture of solid particles and liquid droplets found in the air. Some particles, such as dust, dirt, soot, or smoke, are large or dark enough to be seen with the naked eye.",
+        "created_at": "2018-05-03T10:55:23Z",
+        "updated_at": "2018-05-03T10:55:23Z"
+    },
+    {
+        "id": 19,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "electrical conductivity",
+        "description": "How strongly a given material opposes the flow of electric current.",
+        "created_at": "2017-08-04T12:21:28Z",
+        "updated_at": "2017-08-04T12:21:28Z"
+    },
+    {
+        "id": 15,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "electrode ref",
+        "description": "Electrode Ref value for Electrochemical and Metal Oxide gas sensors",
+        "created_at": "2016-07-06T08:20:17Z",
+        "updated_at": "2016-07-06T08:20:17Z"
+    },
+    {
+        "id": 10,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "street activity",
+        "description": "Calculated based on Open CV countours. (For research purpose only)",
+        "created_at": "2016-06-18T14:31:41Z",
+        "updated_at": "2016-06-18T14:31:41Z"
+    },
+    {
+        "id": 16,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "ionising radiation",
+        "description": "Ionising radiation (ionizing radiation) is radiation that carries enough energy to free electrons from atoms or molecules, thereby ionizing them. Gamma rays, X-rays, and the higher ultraviolet part of the electromagnetic spectrum are ionizing.",
+        "created_at": "2017-05-17T10:26:11Z",
+        "updated_at": "2017-05-17T10:26:11Z"
+    },
+    {
+        "id": 17,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "water temperature",
+        "description": "Water temperature is a measure of how hot or cold the water is.",
+        "created_at": "2017-08-04T12:21:28Z",
+        "updated_at": "2017-08-04T12:21:28Z"
+    },
+    {
+        "id": 18,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "pH",
+        "description": "pH is a numeric scale used to specify the acidity or basicity of an aqueous solution.",
+        "created_at": "2017-08-04T12:21:28Z",
+        "updated_at": "2017-08-04T12:21:28Z"
+    },
+    {
+        "id": 23,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "soil moisture",
+        "description": "Relative measure of the concentration of water that is dissolved in soil.",
+        "created_at": "2018-01-29T12:44:33Z",
+        "updated_at": "2018-01-29T12:44:33Z"
+    },
+    {
+        "id": 24,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "soil temperature",
+        "description": "Soil temperature is a measure of how hot or cold soil is.",
+        "created_at": "2018-01-29T12:45:58Z",
+        "updated_at": "2018-01-29T12:45:58Z"
+    },
+    {
+        "id": 25,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "barometric pressure",
+        "description": "Barometric pressure is the pressure within the atmosphere of Earth. In most circumstances atmospheric pressure is closely approximated by the hydrostatic pressure caused by the weight of air above the measurement point.",
+        "created_at": "2018-05-03T10:55:23Z",
+        "updated_at": "2018-05-03T10:55:23Z"
+    },
+    {
+        "id": 38,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "mA",
+        "description": "Current",
+        "created_at": "2018-11-05T16:14:37Z",
+        "updated_at": "2018-11-05T16:14:37Z"
+    },
+    {
+        "id": 11,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "ADC in V",
+        "description": "Add-on sensor values in raw mV",
+        "created_at": "2016-06-18T16:40:46Z",
+        "updated_at": "2016-06-18T16:40:46Z"
+    },
+    {
+        "id": 31,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "Stagnating time",
+        "description": "Relative time in minutes a water tank has been with no flow",
+        "created_at": "2018-07-20T10:55:01Z",
+        "updated_at": "2018-07-20T10:55:01Z"
+    },
+    {
+        "id": 26,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "o3",
+        "description": "Ozone is found naturally in small concentrations in the stratosphere, a layer of Earth's upper atmosphere. However it can also be found in the lowest layer of the atmosphere. Tropospheric ozone (often termed \"bad\" ozone) is man-made, a result of air pollution from internal combustion engines and power plants.",
+        "created_at": "2018-05-03T10:55:23Z",
+        "updated_at": "2018-05-03T10:55:23Z"
+    },
+    {
+        "id": 40,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "PM Bucket PN0.3",
+        "description": "Particulate Matter Bucket PN0.3",
+        "created_at": "2019-02-27T12:40:49Z",
+        "updated_at": "2019-02-27T12:40:49Z"
+    },
+    {
+        "id": 41,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "PM Bucket PN0.5",
+        "description": "Particulate Matter Bucket PN0.5",
+        "created_at": "2019-02-27T12:40:49Z",
+        "updated_at": "2019-02-27T12:40:49Z"
+    },
+    {
+        "id": 42,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "PM Bucket PN1.0",
+        "description": "Particulate Matter Bucket PN1.0",
+        "created_at": "2019-02-27T12:40:49Z",
+        "updated_at": "2019-02-27T12:40:49Z"
+    },
+    {
+        "id": 43,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "PM Bucket PN2.5",
+        "description": "Particulate Matter Bucket PN2.5",
+        "created_at": "2019-02-27T12:40:49Z",
+        "updated_at": "2019-02-27T12:40:49Z"
+    },
+    {
+        "id": 44,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "PM Bucket PN5.0",
+        "description": "Particulate Matter Bucket PN5.0",
+        "created_at": "2019-02-27T12:40:49Z",
+        "updated_at": "2019-02-27T12:40:49Z"
+    },
+    {
+        "id": 45,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "PM Bucket PN10.0",
+        "description": "Particulate Matter Bucket PN10.0",
+        "created_at": "2019-02-27T12:40:49Z",
+        "updated_at": "2019-02-27T12:40:49Z"
+    },
+    {
+        "id": 28,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "Water level",
+        "description": "Water level on a tank in cm from a relative point",
+        "created_at": "2018-07-20T10:55:01Z",
+        "updated_at": "2018-07-20T10:55:01Z"
+    },
+    {
+        "id": 29,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "Rising time",
+        "description": "Relative time in minutes a water tank has been filling up",
+        "created_at": "2018-07-20T10:55:01Z",
+        "updated_at": "2018-07-20T10:55:01Z"
+    },
+    {
+        "id": 39,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "cm",
+        "description": "Distance",
+        "created_at": "2018-11-09T15:15:12Z",
+        "updated_at": "2018-11-09T15:15:12Z"
+    },
+    {
+        "id": 46,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "eCO2",
+        "description": "Equivalent CO2 is the concentration of CO2 that would cause the same level of radiative forcing as a given type and concentration of greenhouse gas. Examples of such greenhouse gases are methane, perfluorocarbons, and nitrous oxide. CO2 is primarily a by-product of human metabolism and is constantly being emitted into the indoor environment by building occupants. CO2 may come from combustion sources as well. Associations of higher indoor carbon dioxide concentrations with impaired work performance and increased health symptoms have been attributed to correlation of indoor CO2 with concentrations of other indoor air pollutants that are also influenced by rates of outdoor-air ventilation.",
+        "created_at": "2019-03-21T16:55:20Z",
+        "updated_at": "2019-03-21T16:55:20Z"
+    },
+    {
+        "id": 47,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "TVOC",
+        "description": "Total volatile organic compounds is a grouping of a wide range of organic chemical compounds to simplify reporting when these are present in ambient air or emissions. Many substances, such as natural gas, could be classified as volatile organic compounds (VOCs).",
+        "created_at": "2019-03-21T16:55:20Z",
+        "updated_at": "2019-03-21T16:55:20Z"
+    },
+    {
+        "id": 34,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "external air temperature",
+        "description": "Air temperature is a measure of how hot or cold the air is. It is the most commonly measured weather parameter. Air temperature is dependent on the amount and strength of the sunlight hitting the earth, and atmospheric conditions, such as cloud cover and humidity, which trap heat.",
+        "created_at": "2018-08-24T15:34:29Z",
+        "updated_at": "2018-08-24T15:34:29Z"
+    },
+    {
+        "id": 35,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "o3 aux electrode",
+        "description": "In Alphasense Series B Electrochemical Sensors, the auxiliary electrode is an electrode of the same characteristics to those of the working electrode, but it is buried inside an electrolite and, hence, it is not in contact with the target gas. Since it is isolated from external conditions that could affect the working electrode, it serves as a reference to the measurements provided by the latter.",
+        "created_at": "2018-09-16T21:40:56Z",
+        "updated_at": "2018-09-16T21:40:56Z"
+    },
+    {
+        "id": 36,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "no2 aux electrode",
+        "description": "In Alphasense Series B Electrochemical Sensors, the auxiliary electrode is an electrode of the same characteristics to those of the working electrode, but it is buried inside an electrolite and, hence, it is not in contact with the target gas. Since it is isolated from external conditions that could affect the working electrode, it serves as a reference to the measurements provided by the latter.",
+        "created_at": "2018-09-16T21:40:56Z",
+        "updated_at": "2018-09-16T21:40:56Z"
+    },
+    {
+        "id": 37,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "co aux electrode",
+        "description": "In Alphasense Series B Electrochemical Sensors, the auxiliary electrode is an electrode of the same characteristics to those of the working electrode, but it is buried inside an electrolite and, hence, it is not in contact with the target gas. Since it is isolated from external conditions that could affect the working electrode, it serves as a reference to the measurements provided by the latter.",
+        "created_at": "2018-09-16T21:40:56Z",
+        "updated_at": "2018-09-16T21:40:56Z"
+    },
+    {
+        "id": 32,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "gases board temp",
+        "description": "Air temperature near the Alphasense Gas sensors",
+        "created_at": "2018-08-24T15:33:31Z",
+        "updated_at": "2018-08-24T15:33:31Z"
+    },
+    {
+        "id": 33,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "gases board humidity",
+        "description": "Relative humidity near the Alphasense Gas sensors",
+        "created_at": "2018-08-24T15:34:29Z",
+        "updated_at": "2018-08-24T15:34:29Z"
+    },
+    {
+        "id": 48,
+        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+        "name": "formaldehydes",
+        "description": "Formaldehyde is an important chemical used widely by industry to manufacture building materials and numerous household products. It is also a by-product of combustion and certain other natural processes. Thus, it may be present in substantial concentrations both indoors and outdoors. It can cause irritation of the skin, eyes, nose and throat.",
+        "created_at": "2019-12-13T00:00:00Z",
+        "updated_at": "2019-12-13T00:00:00Z"
+    }
+]

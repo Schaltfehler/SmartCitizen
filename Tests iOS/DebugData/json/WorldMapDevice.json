@@ -1,0 +1,27 @@
+{
+  "id": 1234,
+  "name": "Giant Spark Eggnog",
+  "description": "Making Sense Pilot #1",
+  "owner_id": 1234,
+  "owner_username": "USERNAME",
+  "latitude": 40.123456,
+  "longitude": 2.123456,
+  "city": "Barcelona",
+  "country_code": "ES",
+  "kit_id": 11,
+  "state": "has_published",
+  "system_tags": [
+    "offline",
+    "outdoor"
+  ],
+  "user_tags": [
+    "Barcelona",
+    "MakingSense",
+    "Inside",
+    "First Floor",
+    "Commercial"
+  ],
+  "added_at": "2017-07-17T14:53:49Z",
+  "updated_at": "2017-07-17T14:53:49Z",
+  "last_reading_at": "2017-07-17T14:54:54Z"
+}

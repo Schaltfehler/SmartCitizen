@@ -1,0 +1,14 @@
+{
+    "id": 1234,
+    "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+    "username": "USERNAME",
+    "avatar": "https://smartcitizen.s3.amazonaws.com/avatars/default.svg",
+    "url": null,
+    "joined_at": "2020-01-04T11:18:45Z",
+    "location": {
+        "city": "Fukuoka",
+        "country": "Japan",
+        "country_code": "JP"
+    },
+    "device_ids": []
+}

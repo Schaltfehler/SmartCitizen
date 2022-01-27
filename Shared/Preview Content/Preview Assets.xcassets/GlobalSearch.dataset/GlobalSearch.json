@@ -1,0 +1,40 @@
+[
+    {
+        "type": "City",
+        "city": "Barcelona",
+        "name": "Barcelona, BCN, Catalonia, Spain",
+        "layer": "city",
+        "country_code": "ES",
+        "country": "Spain",
+        "latitude": 40.123456,
+        "longitude": 2.123456
+    },
+    {
+        "id": 7,
+        "type": "Tag",
+        "name": "Barcelona",
+        "description": "Smart Citizen kits in the city of Barcelona",
+        "url": "http://api.smartcitizen.me/v0/devices?with_tags=Barcelona"
+    },
+    {
+        "id": 123,
+        "type": "Device",
+        "name": "Barcelona-Corcega",
+        "description": null,
+        "owner_id": 123,
+        "owner_username": "USERNAME",
+        "city": "Barcelona",
+        "url": "http://api.smartcitizen.me/v0/devices/123",
+        "country_code": "ES",
+        "country": "Spain"
+    },
+    {
+        "id": 123,
+        "type": "User",
+        "username": "USERNAME",
+        "avatar": "https://smartcitizen.s3.amazonaws.com/avatars/default.svg",
+        "url": "http://api.smartcitizen.me/v0/users/123",
+        "country_code": "ES",
+        "country": "Spain"
+    }
+]

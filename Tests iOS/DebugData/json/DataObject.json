@@ -1,0 +1,47 @@
+{
+    "recorded_at": "2020-01-05T01:07:37Z",
+    "added_at": "2020-01-05T01:07:37Z",
+    "location": {
+        "ip": null,
+        "exposure": "indoor",
+        "elevation": null,
+        "latitude": 33.590355,
+        "longitude": 130.401716,
+        "geohash": "wvuxp6gwh0nbq",
+        "city": "Fukuoka",
+        "country_code": "JP",
+        "country": "Japan"
+    },
+    "sensors": [
+        {
+            "id": 113,
+            "ancestry": "111",
+            "name": "AMS CCS811 - TVOC",
+            "description": "Total Volatile Organic Compounds Digital Indoor Sensor",
+            "unit": "ppb",
+            "created_at": "2019-03-21T16:43:37Z",
+            "updated_at": "2019-03-21T16:43:37Z",
+            "measurement_id": 47,
+            "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+            "value": 2.0,
+            "raw_value": 2.0,
+            "prev_value": 2.0,
+            "prev_raw_value": 2.0
+        },
+        {
+            "id": 112,
+            "ancestry": "111",
+            "name": "AMS CCS811 - eCO2",
+            "description": "Equivalent Carbon Dioxide Digital Indoor Sensor",
+            "unit": "ppm",
+            "created_at": "2019-03-21T16:43:37Z",
+            "updated_at": "2019-03-21T16:43:37Z",
+            "measurement_id": 46,
+            "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+            "value": 414.0,
+            "raw_value": 414.0,
+            "prev_value": 414.0,
+            "prev_raw_value": 414.0
+        }
+    ]
+}
