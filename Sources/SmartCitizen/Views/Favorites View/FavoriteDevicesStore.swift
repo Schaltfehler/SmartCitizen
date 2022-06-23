@@ -1,7 +1,7 @@
 import Foundation
 import Combine
 
-final public class FavoritesStore: ObservableObject {
+public final class FavoritesStore: ObservableObject {
     private static let devicesStoreKey = "FavoriteDevicesKey"
 
     @Published

@@ -1,4 +1,5 @@
 import SwiftUI
+import SmartCitizen
 
 @main
 struct SmartCitizenApp: App {
@@ -18,8 +19,4 @@ struct SmartCitizenApp: App {
                 .environmentObject(SensorGraphXLabelCache())
         }
     }
-}
-
-final public class SensorGraphXLabelCache: ObservableObject {
-    var cache = [String : CGFloat]()
 }

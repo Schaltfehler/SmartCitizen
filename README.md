@@ -1,6 +1,8 @@
 # SmartCitizen
 An app to search and observe your Smart Citizen Kit.
 
+Open the project via `SmartCitizen/SmartCitizen.xcodeproj`
+
 # Links
 https://smartcitizen.me/
 https://developer.smartcitizen.me/#summary

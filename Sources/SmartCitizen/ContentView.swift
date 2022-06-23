@@ -2,7 +2,12 @@ import SwiftUI
 import Combine
 import MapKit
 
-struct ContentView: View {
+final public class SensorGraphXLabelCache: ObservableObject {
+    public init(){}
+    var cache = [String : CGFloat]()
+}
+
+public struct ContentView: View {
     
     @EnvironmentObject
     var fetcher: DeviceFetcher
@@ -13,7 +18,9 @@ struct ContentView: View {
     @EnvironmentObject
     var worldMapFetcher: WorldMapFetcher
 
-    var body: some View {
+    public init() {}
+
+    public var body: some View {
         TabView {
             FavoritesView()
                 .tabItem {

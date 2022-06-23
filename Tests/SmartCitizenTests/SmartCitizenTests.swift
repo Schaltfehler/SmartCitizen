@@ -1,8 +1,7 @@
 import XCTest
 @testable import SmartCitizen
 
-class Tests_iOS: XCTestCase {
-
+final class SmartCitizenTests: XCTestCase {
     func testDateDecoding() {
         let dateSting = "2020-01-05T01:10:07Z"
         let formatter = DateFormatter()
