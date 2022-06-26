@@ -2,6 +2,8 @@ import Foundation
 import SwiftUI
 
 public class SettingsStore: ObservableObject {
+    public init() {}
+    
     @AppStorage("shouldShowAqi")
     var shouldShowAqi: Bool = true {
         willSet {

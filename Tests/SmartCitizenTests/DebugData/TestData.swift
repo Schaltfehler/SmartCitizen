@@ -1,5 +1,4 @@
 import Foundation
-import UIKit
 
 @testable import SmartCitizen
 
@@ -7,9 +6,9 @@ final class TestData {
 
     /// TestData must be a jsonfile and has been added to the Bundle in root
     static func loadTestData(withFileName fileName: String) -> Data {
-        let bundle = Bundle(for: TestData.self)
-        let path = bundle.path(forResource: fileName, ofType: "json")!
-        let url = URL(fileURLWithPath: path, isDirectory: false)
+        guard let url = Bundle.module.url(forResource: "json/" + fileName, withExtension: "json") else {
+            fatalError("Could find resource for \(fileName).json")
+        }
         let data = try! Data(contentsOf: url)
 
         return data
