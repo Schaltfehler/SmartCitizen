@@ -219,7 +219,7 @@ public struct WorldMapDevice: Codable, Hashable {
     let ownerId: Int
     let ownerUsername: String?
 
-    let kitId: Int
+    let kitId: Int?
 
     let latitude: Double?
     let longitude: Double?
