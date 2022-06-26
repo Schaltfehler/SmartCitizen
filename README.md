@@ -1,7 +1,17 @@
 # SmartCitizen
 An app to search and observe your Smart Citizen Kit.
 
-Open the project via `SmartCitizen/SmartCitizen.xcodeproj`
+
+## How to use
+Open the project via `SmartCitizen/SmartCitizen.xcodeproj`.
+Create a `Config.xcconfig` text file and place it under `SmartCitizen/SmartCitizenApp`.
+Add the following Key Values to the config file to make the app compile.
+
+```
+DEVELOPMENT_TEAM = YOUR_TEAM_ID
+PRODUCT_BUNDLE_IDENTIFIER = YOUR_BUNDLE_ID
+PRODUCT_NAME = Smart Citizen
+```
 
 # Links
 https://smartcitizen.me/
