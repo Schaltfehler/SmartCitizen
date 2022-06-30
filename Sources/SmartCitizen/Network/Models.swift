@@ -46,9 +46,20 @@ public struct Device: Codable, Hashable {
             let uuid: UUID
 
             let value: Double?
-            let rawValue: Double?
-            let prevValue: Double?
-            let prevRawValue: Double?
+
+            public init(from decoder: Decoder) throws {
+                let container = try decoder.container(keyedBy: Device.DataObject.Sensor.CodingKeys.self)
+
+                id = try container.decode(Int.self, forKey: .id)
+                name = try container.decode(String.self, forKey: .name)
+                description = try container.decode(String.self, forKey: .description)
+                unit = try container.decode(String.self, forKey: .unit)
+                createdAt = try container.decode(Date.self, forKey: .createdAt)
+                updatedAt = try container.decode(Date.self, forKey: .updatedAt)
+                measurementId = try container.decode(Int.self, forKey: .measurementId)
+                uuid = try container.decode(UUID.self, forKey: .uuid)
+                value = try? container.decodeIfPresent(Double.self, forKey: .value) ?? nil
+            }
         }
     }
 }
