@@ -1,6 +1,7 @@
 import Foundation
 
 extension Client  {
+    @Sendable
     public static func decodeDate(_ decoder: Decoder) throws -> Date {
         let container = try decoder.singleValueContainer()
         let dateAsString = try container.decode(String.self)
