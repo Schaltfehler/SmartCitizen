@@ -50,4 +50,13 @@ extension SensorFetcher {
     }
 }
 
+extension WorldMapFetcher {
+    static func mocked() -> WorldMapFetcher {
+        let data = NSDataAsset(name: "WorldDevices")!.data
+        let apiClient = Client.mocked(width: data)
+        let fetcher = WorldMapFetcher(client: apiClient)
+        return fetcher
+    }
+}
+
 #endif
