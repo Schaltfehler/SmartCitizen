@@ -1,11 +1,14 @@
 import SwiftUI
 import MapKit
 import UIKit
+import Combine
 
 struct SCKMapView: UIViewRepresentable {
 
-    let annotations: [SCKAnnotation]
-    var region: MKCoordinateRegion?
+    let startRegion: MKCoordinateRegion
+
+    @Binding
+    var annotations: [SCKAnnotation]
 
     @Binding
     var tappedDetailsForAnnotation: [SCKAnnotation]
@@ -13,18 +16,19 @@ struct SCKMapView: UIViewRepresentable {
     @Binding
     var selectedSCKAnnotations: [SCKAnnotation]
 
-    init(region: MKCoordinateRegion? = nil,
-         annotations: [SCKAnnotation] = [],
-         selectedAnnotations: Binding<[SCKAnnotation]> = .constant([]),
-         tappedDetailsForAnnotation: Binding<[SCKAnnotation]> = .constant([])){
-        self.annotations = annotations
-        self.region = region
+    init(startRegion: MKCoordinateRegion,
+         annotations: Binding<[SCKAnnotation]>,
+         selectedAnnotations: Binding<[SCKAnnotation]>,
+         tappedDetailsForAnnotation: Binding<[SCKAnnotation]>){
+        self.startRegion = startRegion
+        self._annotations = annotations
         self._selectedSCKAnnotations = selectedAnnotations
         self._tappedDetailsForAnnotation = tappedDetailsForAnnotation
     }
 
     func makeCoordinator() -> Coordinator {
-        return Coordinator(for: self)
+        Coordinator(selectedAnnotations: $selectedSCKAnnotations,
+                    tappedDetailsForAnnotation: $tappedDetailsForAnnotation)
     }
 
     func makeUIView(context: UIViewRepresentableContext<SCKMapView>) -> MKMapView {
@@ -42,18 +46,19 @@ struct SCKMapView: UIViewRepresentable {
         mapView.showsUserLocation = false
         mapView.userTrackingMode = .none
         mapView.mapType = .mutedStandard
-        if let region = region {
-            mapView.setRegion(region, animated: false)
-        }
+        mapView.setRegion(startRegion, animated: false)
 
         return mapView
     }
 
     func updateUIView(_ mapView: MKMapView, context: UIViewRepresentableContext<SCKMapView>) {
-        let skAnnotations: [SCKAnnotation] = mapView.annotations.compactMap { $0 as? SCKAnnotation }
-        let diff = annotations.difference(from: skAnnotations) { (annotationA, annotationB) in
-            annotationA.deviceId == annotationB.deviceId
-        }
+        let currentAnnotations: [SCKAnnotation] = mapView.annotations
+            .compactMap { $0 as? SCKAnnotation }
+            .sorted { $0.deviceId < $1.deviceId }
+
+        let newAnnotations = annotations.sorted { $0.deviceId < $1.deviceId }
+
+        let diff = newAnnotations.difference(from: currentAnnotations)
 
         var inserts = [MKAnnotation]()
         var removals = [MKAnnotation]()
@@ -73,19 +78,28 @@ struct SCKMapView: UIViewRepresentable {
 
 extension SCKMapView {
     class Coordinator: NSObject, MKMapViewDelegate {
-        let mapView: SCKMapView
 
-        init(for mapView: SCKMapView) {
-            self.mapView = mapView
+        @Binding
+        var tappedDetailsForAnnotation: [SCKAnnotation]
+
+        @Binding
+        var selectedSCKAnnotations: [SCKAnnotation]
+
+        init(selectedAnnotations: Binding<[SCKAnnotation]>,
+             tappedDetailsForAnnotation: Binding<[SCKAnnotation]>
+        ) {
+            self._selectedSCKAnnotations = selectedAnnotations
+            self._tappedDetailsForAnnotation = tappedDetailsForAnnotation
+
             super.init()
         }
 
         func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-            self.mapView.selectedSCKAnnotations = mapView.selectedAnnotations.compactMap { $0 as? SCKAnnotation }
+            selectedSCKAnnotations = mapView.selectedAnnotations.compactMap { $0 as? SCKAnnotation }
         }
 
         func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-            self.mapView.selectedSCKAnnotations = mapView.selectedAnnotations.compactMap { $0 as? SCKAnnotation }
+            selectedSCKAnnotations = mapView.selectedAnnotations.compactMap { $0 as? SCKAnnotation }
         }
 
         func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
@@ -95,9 +109,9 @@ extension SCKMapView {
 
             if let clusterAnnotation = annotation as? MKClusterAnnotation,
                let annotations = clusterAnnotation.memberAnnotations as? [SCKAnnotation] {
-                self.mapView.tappedDetailsForAnnotation = annotations
+                tappedDetailsForAnnotation = annotations
             } else if let annotation = annotation as? SCKAnnotation {
-                self.mapView.tappedDetailsForAnnotation = [annotation]
+                tappedDetailsForAnnotation = [annotation]
             }
         }
 
@@ -112,10 +126,12 @@ extension SCKMapView {
     }
 }
 
-
-struct MapView_Previews: PreviewProvider {
+struct SCKMapView_Previews: PreviewProvider {
     static var previews: some View {
-        SCKMapView()
+        SCKMapView(startRegion: .init(center: .init(), span: .init()),
+                   annotations: .constant([]),
+                   selectedAnnotations: .constant([]),
+                   tappedDetailsForAnnotation: .constant([])
+        )
     }
 }
-

@@ -8,17 +8,10 @@ final public class SensorGraphXLabelCache: ObservableObject {
 }
 
 public struct ContentView: View {
-    
-    @EnvironmentObject
-    var fetcher: DeviceFetcher
-
-    var barcelona = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 41.385064, longitude: 2.173403),
-                                     span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
-
-    @EnvironmentObject
-    var worldMapFetcher: WorldMapFetcher
-
-    public init() {}
+    let mapViewModel: MapViewModel
+    public init(mapViewModel: MapViewModel) {
+        self.mapViewModel = mapViewModel
+    }
 
     public var body: some View {
         TabView {
@@ -28,7 +21,7 @@ public struct ContentView: View {
                     Text("Favorite Devices")
                 }
 
-            MapFetchView(region: barcelona)
+            MapView(mapViewModel)
                 .tabItem {
                     Image(systemName: "map")
                     Text("Map")
@@ -40,9 +33,6 @@ public struct ContentView: View {
                     Text("Search Devices")
                 }
         }
-        .onAppear {
-            worldMapFetcher.fetchIfNeeded()
-        }
     }
 }
 
@@ -51,10 +41,9 @@ public struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
 
     static var previews: some View {
-        return ContentView()
+        ContentView(mapViewModel: .init(region: .init(), fetcher: .mocked()))
             .environmentObject(DeviceFetcher.mocked())
             .environmentObject(SearchFetcher.mocked())
-            .environmentObject(WorldMapFetcher(client: Client()))
             .environmentObject(FavoritesStore())
             .environmentObject(SensorGraphXLabelCache())
     }

@@ -1,0 +1,28 @@
+[
+    {
+        "id": 1234,
+        "name": "Test Device 1",
+        "description": "Try something out",
+        "owner_id": 9999,
+        "owner_username": "TestUser1",
+        "latitude": 41.385064,
+        "longitude": 2.173403,
+        "city": "Barcelona",
+        "country_code": "ES",
+        "kit_id": 11,
+        "state": "has_published",
+        "system_tags":
+        [
+            "offline",
+            "outdoor"
+        ],
+        "user_tags":
+        [
+            "Barcelona",
+            "Inside"
+        ],
+        "added_at": "2020-01-10T14:00:00Z",
+        "updated_at": "2020-01-10T14:00:00Z",
+        "last_reading_at": "2020-01-11T14:00:00Z"
+    }
+]

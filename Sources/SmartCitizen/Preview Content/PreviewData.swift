@@ -40,4 +40,12 @@ final class PreviewData {
 
         return measurements
     }
+
+    static func loadWorldDeviceForBarcelona() -> [WorldMapDevice] {
+        let data = PreviewData.loadTestData(withFileName: "WorldDevices")
+        let decoder = Client.jsonDecoder()
+        let devices = try! decoder.decode(Array<WorldMapDevice>.self, from: data)
+
+        return devices
+    }
 }
