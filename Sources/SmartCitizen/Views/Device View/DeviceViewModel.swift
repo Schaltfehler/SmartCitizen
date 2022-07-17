@@ -1,9 +1,9 @@
 import Foundation
 import CoreLocation
+import Combine
 
-public struct DeviceViewModel: Hashable, Identifiable, Codable {
+public final class DeviceViewModel: ObservableObject, Identifiable {
     public let id: Int
-
     public let ownerName: String
     public let cityName: String
 
@@ -84,27 +84,51 @@ public struct DeviceViewModel: Hashable, Identifiable, Codable {
 
         return Humidex(celsius: temperture, humidity: humidity)
     }
+
+    var store: SettingsStore
+
+    @Published
+    var showingSettings = false
+
+    public init(id: Int,
+                ownerName: String,
+                cityName: String,
+                name: String,
+                description: String,
+                state: String,
+                timeZone: TimeZone,
+                lastRecorded: Date,
+                measurments: [MeasurementViewModel],
+                store: SettingsStore) {
+        self.id = id
+        self.ownerName = ownerName
+        self.cityName = cityName
+        self.name = name
+        self.description = description
+        self.state = state
+        self.timeZone = timeZone
+        self.lastRecorded = lastRecorded
+        self.measurments = measurments
+        self.store = store
+    }
+
+    func settingsButtonTapped() {
+        showingSettings.toggle()
+    }
 }
 
 extension DeviceViewModel {
-    public init(device: Device, measurements:[SCKMeasurement]) {
-
+    public convenience init(device: Device, measurements: [SCKMeasurement], store: SettingsStore) {
         let measurementDict = Dictionary(uniqueKeysWithValues: measurements.map {($0.id, $0)})
+        let measurments: [MeasurementViewModel] = device.data.sensors
+            .map { (sensor: Device.DataObject.Sensor) in
+                let measurement = measurementDict[sensor.measurementId]
+                return MeasurementViewModel.init(sensor: sensor, measurement: measurement)
+            }
+            .sorted{ $0.name.lowercased() < $1.name.lowercased() }
 
-        id = device.id
-        name = device.name
-        ownerName = device.owner.username
-        cityName = device.data.location.city ?? "-"
-        description = device.description ?? "-"
-        state = device.state
-        lastRecorded = device.lastReadingAt ?? Date(timeIntervalSince1970: 0)
-        measurments = device.data.sensors.map { (sensor: Device.DataObject.Sensor) in
-            let measurement = measurementDict[sensor.measurementId]
-            return MeasurementViewModel.init(sensor: sensor, measurement: measurement)
-        }.sorted{ $0.name.lowercased() < $1.name.lowercased() }
-
-        timeZone = TimeZone.current
-        // TODO: Find a better way to find a correct TimeZone for the device
+        let timeZone = TimeZone.current
+        // TODO: Find a better way to get correct TimeZone for the device
 //        if let latitude = device.data.location.latitude,
 //           let longitude = device.data.location.longitude {
 //            let location = CLLocation(latitude: latitude, longitude: longitude)
@@ -114,5 +138,17 @@ extension DeviceViewModel {
 //                self.timeZone = placemark?.timeZone ?? TimeZone.init(secondsFromGMT: 0)!
 //            }
 //        }
+
+        self.init(id: device.id,
+                  ownerName: device.owner.username,
+                  cityName: device.data.location.city ?? "-",
+                  name: device.name,
+                  description: device.description ?? "-",
+                  state: device.state,
+                  timeZone: timeZone,
+                  lastRecorded: device.lastReadingAt ?? Date(timeIntervalSince1970: 0),
+                  measurments: measurments,
+                  store: store)
+
     }
 }

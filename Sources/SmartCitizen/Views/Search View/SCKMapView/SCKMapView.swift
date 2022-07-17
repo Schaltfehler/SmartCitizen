@@ -54,9 +54,9 @@ struct SCKMapView: UIViewRepresentable {
     func updateUIView(_ mapView: MKMapView, context: UIViewRepresentableContext<SCKMapView>) {
         let currentAnnotations: [SCKAnnotation] = mapView.annotations
             .compactMap { $0 as? SCKAnnotation }
-            .sorted { $0.deviceId < $1.deviceId }
+            .sorted { $0.deviceID < $1.deviceID }
 
-        let newAnnotations = annotations.sorted { $0.deviceId < $1.deviceId }
+        let newAnnotations = annotations.sorted { $0.deviceID < $1.deviceID }
 
         let diff = newAnnotations.difference(from: currentAnnotations)
 

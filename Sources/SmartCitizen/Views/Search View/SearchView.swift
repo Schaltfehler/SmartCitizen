@@ -2,67 +2,17 @@ import SwiftUI
 
 public struct SearchView: View {
 
-    public init() { }
-
-    @State
-    var search: String = ""
+    @EnvironmentObject
+    var store: FavoritesStore
 
     @EnvironmentObject
-    var fetcher: SearchFetcher
+    var deviceFetcher: DeviceFetcher
 
-    fileprivate func cell(for globalResult: GlobalSearch) -> some View {
-        if case let GlobalSearch.device(device) = globalResult {
-            return NavigationLink(
-                destination: DeviceFetchingView(deviceId: device.id)) {
-                SearchResultView(result: globalResult)
-            }
-            .eraseToAnyView()
-        } else {
-            return SearchResultView(result: globalResult)
-                .eraseToAnyView()
-        }
-    }
+    @ObservedObject
+    var viewModel: SearchViewModel
 
-    var serachFetchingView: AnyView {
-        switch fetcher.state {
-        case .fetching:
-            return VStack {
-                Spacer()
-                Text("Loading...")
-                    .font(.title)
-                Spacer()
-            }
-            .eraseToAnyView()
-
-        case .fetched(let result):
-            switch result {
-            case .success(let globalResults):
-                return List {
-                    ForEach(globalResults, id: \.self) { globalResult in
-                        self.cell(for: globalResult)
-                    }
-                }
-                .eraseToAnyView()
-
-            case .failure(let error):
-                return VStack {
-                    Spacer()
-                    Text(error.localizedDescription)
-                        .font(.title)
-                    Spacer()
-                }
-                .eraseToAnyView()
-
-            }
-        case .empty:
-            return VStack {
-                Spacer()
-                Text("Search for devices")
-                    .font(.title)
-                Spacer()
-            }
-            .eraseToAnyView()
-        }
+    public init(_ viewModel: SearchViewModel) {
+        self.viewModel = viewModel
     }
 
     public var body: some View {
@@ -73,10 +23,9 @@ public struct SearchView: View {
                         .padding(.leading, CGFloat(10.0))
                         .padding(.trailing, CGFloat(5.0))
 
-                    TextField("Search", text: $search,
-                              onCommit: {
-                                self.fetcher.fetch(searchTerm: self.search)
-                              })
+                    TextField("Search",
+                              text: $viewModel.search,
+                              onCommit: viewModel.textinputHasChanged)
                         .padding(.vertical, CGFloat(4.0))
                         .padding(.trailing, CGFloat(10.0))
                 }
@@ -86,7 +35,31 @@ public struct SearchView: View {
                 )
                 .padding()
                 Spacer()
-                serachFetchingView
+                switch viewModel.fetchingState {
+                case let .displayText(text):
+                    VStack {
+                        Spacer()
+                        Text(text)
+                            .font(.title)
+                        Spacer()
+                    }
+                case let .result(globalResults):
+                    List {
+                        ForEach(globalResults, id: \.self) { globalResult in
+                            if case let GlobalSearch.device(device) = globalResult {
+                                NavigationLink(
+                                    destination: DeviceFetchingView(.init(deviceID: device.id,
+                                                                          fetcher: DeviceFetcher(client:Client()),
+                                                                          store: store))
+                                ) {
+                                    SearchResultView(result: globalResult)
+                                }
+                            } else {
+                                SearchResultView(result: globalResult)
+                            }
+                        }
+                    }
+                }
             }
             .navigationBarTitle("Search for devices", displayMode: .inline)
         }
@@ -105,8 +78,7 @@ public struct SearchView: View {
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        return SearchView()
-            .environmentObject(SearchFetcher.mocked())
+        SearchView(.init(fetcher: .mocked()))
     }
 }
 

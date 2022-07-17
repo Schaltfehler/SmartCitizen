@@ -9,8 +9,8 @@ public struct SensorFetcher {
         apiClient = client
     }
     
-    public func requestReadingsFor(deviceId id: Int, sensorId: Int, interval: DateInterval, rollup: Rollup) ->  AnyPublisher<Readings, Error> {
-        let request = APIRequestBuilder.readings(deviceId: id,
+    public func requestReadingsFor(deviceID id: Int, sensorId: Int, interval: DateInterval, rollup: Rollup) ->  AnyPublisher<Readings, Error> {
+        let request = APIRequestBuilder.readings(deviceID: id,
                                                    sensorId: sensorId,
                                                    rollup: rollup,
                                                    from: interval.start,

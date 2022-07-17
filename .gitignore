@@ -5,6 +5,7 @@
 
 # ignore Xcode config files
 *.xcconfig
+.build/
 
 # General
 .DS_Store

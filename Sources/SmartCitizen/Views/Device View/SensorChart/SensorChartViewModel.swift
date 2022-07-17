@@ -103,7 +103,7 @@ final class SensorChartViewModel: ObservableObject {
 
     let fetcher: SensorFetcher
 
-    var deviceId: Int {
+    var deviceID: Int {
         sensor.device_id
     }
     var sensorId: Int{
@@ -241,7 +241,7 @@ final class SensorChartViewModel: ObservableObject {
     func fetch() {
         // overshoot by 2min, so we can capture the full range
         let interval = DateInterval(start: currentDateInterval.start, end: currentDateInterval.end.advanced(by: 120))
-        fetcher.requestReadingsFor(deviceId: deviceId, sensorId: sensorId, interval: interval, rollup: dateRange.rollup)
+        fetcher.requestReadingsFor(deviceID: deviceID, sensorId: sensorId, interval: interval, rollup: dateRange.rollup)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] (completion: Subscribers.Completion<Error>) in
                 if case .failure(_) = completion {

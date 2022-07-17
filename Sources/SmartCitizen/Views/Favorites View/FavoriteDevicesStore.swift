@@ -4,32 +4,40 @@ import Combine
 public final class FavoritesStore: ObservableObject {
     private static let devicesStoreKey = "FavoriteDevicesKey"
 
-    @Published
-    private(set) var devices: Array<DeviceCellModel> {
-        didSet {
-            let encoder = JSONEncoder()
-            if let encoded = try? encoder.encode(devices) {
-                let defaults = UserDefaults.standard
-                defaults.set(encoded, forKey: FavoritesStore.devicesStoreKey)
-            }
+    public static var `default` = FavoritesStore(load: FavoritesStore.load,
+                                                 save: FavoritesStore.save)
+
+    static func save(_ devices: [DeviceCellModel]) {
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(devices) {
+            let defaults = UserDefaults.standard
+            defaults.set(encoded, forKey: FavoritesStore.devicesStoreKey)
         }
     }
 
-
-    public init() {
-        func load() -> Array<DeviceCellModel> {
-            let userDefault = UserDefaults.standard
-            if let savedPerson = userDefault.object(forKey: FavoritesStore.devicesStoreKey) as? Data {
-                let decoder = JSONDecoder()
-                if let loadedPerson = try? decoder.decode(Array<DeviceCellModel>.self, from: savedPerson) {
-                    return loadedPerson
-                }
+    static func load() -> [DeviceCellModel] {
+        let userDefault = UserDefaults.standard
+        if let savedPerson = userDefault.object(forKey: FavoritesStore.devicesStoreKey) as? Data {
+            let decoder = JSONDecoder()
+            if let loadedPerson = try? decoder.decode(Array<DeviceCellModel>.self, from: savedPerson) {
+                return loadedPerson
             }
-
-            return Array<DeviceCellModel>()
         }
 
-        self.devices = load()
+        return [DeviceCellModel]()
+    }
+
+    private let loadDevices: () -> Array<DeviceCellModel>
+    private let saveDevices: ([DeviceCellModel]) -> Void
+
+    @Published
+    private(set) var devices: Array<DeviceCellModel>
+
+    init(load: @escaping () -> Array<DeviceCellModel>, save: @escaping ([DeviceCellModel]) -> Void) {
+        self.loadDevices = load
+        self.saveDevices = save
+
+        self.devices = loadDevices()
     }
 
     func append(_ device: DeviceCellModel) {
@@ -43,10 +51,6 @@ public final class FavoritesStore: ObservableObject {
     }
 
     func save() {
-        let encoder = JSONEncoder()
-        if let encoded = try? encoder.encode(devices) {
-            let defaults = UserDefaults.standard
-            defaults.set(encoded, forKey: FavoritesStore.devicesStoreKey)
-        }
+        saveDevices(devices)
     }
 }

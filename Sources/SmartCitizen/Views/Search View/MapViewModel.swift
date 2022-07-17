@@ -2,7 +2,7 @@ import Foundation
 import MapKit
 import Combine
 
-public class MapViewModel: ObservableObject {
+public final class MapViewModel: ObservableObject {
     let region: MKCoordinateRegion
 
     private let fetcher: WorldMapFetcher
@@ -56,11 +56,11 @@ public class MapViewModel: ObservableObject {
 
         if annotations.count == 1,
            let annotation = annotations.first {
-            selectedDeviceId = annotation.deviceId
+            selectedDeviceId = annotation.deviceID
             actionState = 1
         } else {
             selectedDevices = annotations.map { annotation in
-                DeviceCellModel(id: annotation.deviceId,
+                DeviceCellModel(id: annotation.deviceID,
                                 name: annotation.title ?? "?",
                                 userName: annotation.subtitle ?? "?")
             }
@@ -82,7 +82,7 @@ public class MapViewModel: ObservableObject {
                       let longitude = device.longitude
                 else { return nil }
 
-                return SCKAnnotation(deviceId: device.id,
+                return SCKAnnotation(deviceID: device.id,
                                      title: device.name ?? "?",
                                      subtitle: device.systemTags.joined(separator: ", "),
                                      coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude),

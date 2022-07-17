@@ -50,6 +50,12 @@ extension SensorFetcher {
     }
 }
 
+extension FavoritesStore {
+    static func mocked(_ device: [DeviceCellModel]) -> FavoritesStore {
+        FavoritesStore(load: { device }, save: { _ in /* no-op */})
+    }
+}
+
 extension WorldMapFetcher {
     static func mocked() -> WorldMapFetcher {
         let data = NSDataAsset(name: "WorldDevices")!.data

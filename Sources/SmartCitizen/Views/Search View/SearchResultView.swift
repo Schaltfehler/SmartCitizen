@@ -3,45 +3,37 @@ import SwiftUI
 struct SearchResultView: View {
     let result: GlobalSearch
 
-    var searchResult: AnyView {
+    var body: some View {
         switch result {
         case .user(let user):
-            return HStack {
+            HStack {
                 Text("User: ")
                 Text(user.username)
             }
-            .eraseToAnyView()
 
         case .device(let device):
             let model = DeviceCellModel(id: device.id,
                                         name: device.name ?? "?",
                                         cityName: device.city ?? "?",
                                         userName: device.ownerUsername ?? "?")
-            return DeviceCell(model: model)
-                .eraseToAnyView()
+            DeviceCell(model: model)
 
         case .city(let city):
-            return HStack {
+            HStack {
                 Text("City: ")
                 Text(city.city ?? "No Name")
             }
-            .eraseToAnyView()
+
         case .tag(let tag):
-            return HStack {
+            HStack {
                 Text("Tag: ")
                 Text(tag.name)
             }
-            .eraseToAnyView()
         case .unknown(let unknown):
-            return HStack {
+            HStack {
                 Text(unknown)
             }
-            .eraseToAnyView()
         }
-    }
-
-    var body: some View {
-        searchResult
     }
 }
 
