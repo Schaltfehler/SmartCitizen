@@ -7,8 +7,8 @@ class SCKAnnotation: NSObject, MKAnnotation, Identifiable {
         case sck21
     }
 
-    init(deviceId: Int, title: String, subtitle: String, coordinate: CLLocationCoordinate2D, type: SCKType) {
-        self.deviceId = deviceId
+    init(deviceID: Int, title: String, subtitle: String, coordinate: CLLocationCoordinate2D, type: SCKType) {
+        self.deviceID = deviceID
         self.title = title
         self.subtitle = subtitle
         self.coordinate = coordinate
@@ -17,7 +17,7 @@ class SCKAnnotation: NSObject, MKAnnotation, Identifiable {
         super.init()
     }
 
-    var deviceId: Int
+    var deviceID: Int
     var title: String?
     var subtitle: String?
     var coordinate: CLLocationCoordinate2D

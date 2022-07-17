@@ -33,7 +33,7 @@ enum APIRequestBuilder {
     }
 
     // Date is expected to be in UTC
-    static func readings(deviceId: Int,
+    static func readings(deviceID: Int,
                          sensorId: Int,
                          rollup: Rollup,
                          from fromDate: Date?,
@@ -65,7 +65,7 @@ enum APIRequestBuilder {
             queryItems.append(URLQueryItem(name: "all_intervals", value: allIntervals ? "true" : "false" ))
         }
 
-        return APIRequest(method: .get, path: "/v0/devices/\(deviceId)/readings/", queryParameter: queryItems)
+        return APIRequest(method: .get, path: "/v0/devices/\(deviceID)/readings/", queryParameter: queryItems)
     }
 
     ///  Searches Users, Devices, Tags and Cities at the same time

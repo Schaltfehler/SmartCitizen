@@ -1,28 +1,22 @@
 import Foundation
 import Combine
 
-public enum FetchState<T> {
+public enum FetchState<T: Equatable> {
     case empty
     case fetching
-    case fetched(Result<T, Error>)
+    case fetched(T)
+    case failed(Error)
 }
 
 extension FetchState: Equatable {
     public static func == (lhs: FetchState<T>, rhs: FetchState<T>) -> Bool {
         switch (lhs, rhs) {
-        case (.empty, .empty):
+        case (.empty, .empty), (.fetching, .fetching):
             return true
-        case (.fetching, .fetching):
-            return true
-        case let (.fetched(result1), .fetched(result2)):
-            switch (result1, result2) {
-            case (.failure(_), .failure(_)):
-                return true
-            case (.success(_), .success(_)):
-                return true
-            default:
-                return false
-            }
+        case let (.fetched(lResult), .fetched(rResult)):
+            return lResult == rResult
+        case let (.failed(lError), .failed(rError)):
+            return lError.localizedDescription == rError.localizedDescription
         default:
             return false
         }
@@ -31,28 +25,13 @@ extension FetchState: Equatable {
 
 public final class SearchFetcher: ObservableObject {
 
-    @Published private(set)
-    public var state: FetchState<Array<GlobalSearch>>
+    @Published
+    private(set) var state: FetchState<[GlobalSearch]> = .empty
 
     let apiClient: Client
-    private var subscriptions = Set<AnyCancellable>()
 
     public init(client: Client) {
-        state = .empty
         apiClient = client
-    }
-
-    private func onReceive(_ completion: Subscribers.Completion<Error>) {
-        switch completion {
-        case .finished:
-            break
-        case .failure(let error):
-            state = .fetched(.failure(error))
-        }
-    }
-
-    private func onReceive(_ searchResults: [GlobalSearch]) {
-        state = .fetched(.success(searchResults))
     }
 
     public func fetch(searchTerm text: String) {
@@ -62,7 +41,7 @@ public final class SearchFetcher: ObservableObject {
         let searchPublisher = apiClient.publisher(for: request)
 
         searchPublisher
-            .map{ (results: Array<GlobalSearch>) -> Array<GlobalSearch> in
+            .map{ (results: [GlobalSearch]) -> [GlobalSearch] in
                 results.filter {
                     if case GlobalSearch.device(_) = $0 {
                         return true
@@ -72,7 +51,8 @@ public final class SearchFetcher: ObservableObject {
                 }
             }
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: onReceive, receiveValue: onReceive)
-            .store(in: &subscriptions)
+            .map{ .fetched($0) }
+            .catch{ Just(.failed($0)) }
+            .assign(to: &$state)
     }
 }

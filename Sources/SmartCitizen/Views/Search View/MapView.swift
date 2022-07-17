@@ -2,6 +2,11 @@ import SwiftUI
 import MapKit
 
 public struct MapView: View {
+    @EnvironmentObject
+    var deviceFetcher: DeviceFetcher
+
+    @EnvironmentObject
+    var store: FavoritesStore
 
     @ObservedObject
     var viewModel: MapViewModel
@@ -11,16 +16,24 @@ public struct MapView: View {
     }
 
     public var body: some View {
+        
         NavigationView {
             ZStack(alignment: .topLeading) {
                 NavigationLink(
-                    destination: DeviceFetchingView(deviceId: viewModel.selectedDeviceId),
+                    destination: DeviceFetchingView(
+                        DeviceFetchingViewModel(
+                            deviceID: viewModel.selectedDeviceId,
+                            fetcher: deviceFetcher,
+                            store: store
+                        )
+                    ),
                     tag: 1,
                     selection: $viewModel.actionState) {
                         EmptyView()
                     }
                 NavigationLink(
-                    destination: DeviceListView(models: viewModel.selectedDevices, title: "Devices"),
+                    destination: DeviceListView(title: "Devices",
+                                                devices: viewModel.selectedDevices),
                     tag: 2,
                     selection: $viewModel.actionState) {
                         EmptyView()
@@ -49,8 +62,13 @@ public struct MapView: View {
 
 #if DEBUG
 struct MapView_Previews: PreviewProvider {
+    static let deviceFetcher = DeviceFetcher.mocked()
+    static let favoritesStore = FavoritesStore.default
     static var previews: some View {
-        MapView(.init(region: .fukuoka, fetcher: WorldMapFetcher.mocked() ))
+        MapView(.init(region: .fukuoka, fetcher: .mocked()))
+        .environmentObject(deviceFetcher)
+        .environmentObject(favoritesStore)
     }
+
 }
 #endif

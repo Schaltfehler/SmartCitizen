@@ -1,27 +1,23 @@
 import SwiftUI
+import Combine
 
 public struct DeviceView: View {
 
-    @EnvironmentObject
-    var store: SettingsStore
-    
-    @State
-    var showingSettings = false
+    @ObservedObject
+    var viewModel: DeviceViewModel
 
     public init(device: DeviceViewModel) {
-        self.device = device
+        self.viewModel = device
     }
-
-    let device: DeviceViewModel
     
     var header: some View {
         HStack {
             Text("Device")
             Spacer()
-            Button(action: {showingSettings.toggle()}) {
+            Button(action: viewModel.settingsButtonTapped) {
                 Image(systemName: "gearshape")
             }
-            .sheet(isPresented: $showingSettings) {
+            .sheet(isPresented: $viewModel.showingSettings) {
                 SettingsView()
             }
         }
@@ -30,42 +26,42 @@ public struct DeviceView: View {
     public var body: some View {
         Form {
             Section(header: header) {
-                Text(device.name)
+                Text(viewModel.name)
                     .withLabel(label: "Name")
-                DateView(date: device.lastRecorded)
+                DateView(date: viewModel.lastRecorded)
                     .withLabel(label: "Updated")
 
-                if let aqi = device.aqi,
-                   store.shouldShowAqi {
+                if let aqi = viewModel.aqi,
+                   viewModel.store.shouldShowAqi {
                     AQIValueView(index: aqi)
                 }
 
-                if let thi = device.temperatureHumidityIndex,
-                   store.shouldShowThi {
+                if let thi = viewModel.temperatureHumidityIndex,
+                   viewModel.store.shouldShowThi {
                     THIValueView(thi: thi)
                 }
 
-                if let tdi = device.discomfortIndexAfterThom,
-                   store.shouldShowTdi {
+                if let tdi = viewModel.discomfortIndexAfterThom,
+                   viewModel.store.shouldShowTdi {
                     TDIValueView(tdi: tdi)
                 }
 
-                if let kdi = device.discomfortIndexAfterKawamura,
-                   store.shouldShowKdi {
+                if let kdi = viewModel.discomfortIndexAfterKawamura,
+                   viewModel.store.shouldShowKdi {
                     KDIValueView(kdi: kdi)
                 }
 
-                if let humidex = device.humidex,
-                   store.shouldShowHumidex {
+                if let humidex = viewModel.humidex,
+                   viewModel.store.shouldShowHumidex {
                     HumidexValueView(humidex: humidex)
                 }
             }
 
             Section(header: Text("Measurments")){
-                ForEach(device.measurments) { measurment in
+                ForEach(viewModel.measurments) { measurment in
                     let model = SensorChartViewModel(dateRange: .hour,
-                                                     sensor: SensorModel(sensor: measurment, device: self.device),
-                                                     timeZone: self.device.timeZone,
+                                                     sensor: SensorModel(sensor: measurment, device: viewModel),
+                                                     timeZone: viewModel.timeZone,
                                                      fetcher: SensorFetcher(client: Client()))
 
                     NavigationLink(destination: SensorChartView(model: model)) {
@@ -198,7 +194,8 @@ struct DeviceView_Previews: PreviewProvider {
         let measurements = PreviewData.loadMeasurements()
 
         let viewModel = DeviceViewModel(device: device,
-                                        measurements: measurements)
+                                        measurements: measurements,
+                                        store: .init())
         return NavigationView {
             DeviceView(device: viewModel)
         }

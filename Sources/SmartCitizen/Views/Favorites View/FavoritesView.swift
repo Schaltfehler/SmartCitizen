@@ -2,28 +2,40 @@ import Foundation
 import SwiftUI
 
 public struct FavoritesView: View {
-    public init() { }
+    @ObservedObject
+    var viewModel: FavoritesViewModel
 
-    @EnvironmentObject
-    var store: FavoritesStore
+    public init(_ viewModel: FavoritesViewModel) {
+        self.viewModel = viewModel
+    }
 
     public var body: some View {
         NavigationView {
-            DeviceListView(models: store.devices, title: "Favorite devices")
+            DeviceListView(
+                title: "Favorite devices",
+                devices: viewModel.storedDevices
+            )
         }
     }
 }
 
 public struct DeviceListView: View {
+    @EnvironmentObject
+    var deviceFetcher: DeviceFetcher
 
-    var models: [DeviceCellModel]
+    @EnvironmentObject
+    var favoritesStore: FavoritesStore
+
     let title: String
+    let devices: [DeviceCellModel]
 
     public var body: some View {
         List {
-            ForEach(models) { deviceModel in
-                NavigationLink(destination: DeviceFetchingView(deviceId: deviceModel.id)) {
-                    DeviceCell(model: deviceModel)
+            ForEach(devices) { device in
+                NavigationLink(destination: DeviceFetchingView.init(.init(deviceID: device.id,
+                                                                          fetcher: deviceFetcher,
+                                                                          store: favoritesStore))) {
+                    DeviceCell(model: device)
                 }
             }
         }
@@ -35,13 +47,13 @@ public struct DeviceListView: View {
 struct FavoritesView_Previews: PreviewProvider {
 
     static var previews: some View {
-        let models = [
+        let devices = [
             DeviceCellModel(id: 1, name: "Ludwig", cityName: "Fukuoka", userName: "Paul"),
             DeviceCellModel(id: 2, name: "Hackathon", cityName: "Fukuoka", userName: "Freddy"),
             DeviceCellModel(id: 3, name: "Muller", userName: "Hugo"),
         ]
         return NavigationView {
-            DeviceListView(models: models, title: "My List")
+            DeviceListView(title: "My List", devices: devices)
         }
     }
 }

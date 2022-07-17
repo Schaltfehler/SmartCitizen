@@ -1,95 +1,69 @@
 import SwiftUI
+import Combine
 
 public struct DeviceFetchingView: View {
-
-    public init(deviceId: Int, client: Client = Client()) {
-        self.deviceId = deviceId
-        fetcher = DeviceFetcher(client: client)
-    }
-
-    let deviceId: Int
+    @EnvironmentObject
+    var store: SettingsStore
 
     @ObservedObject
-    var fetcher: DeviceFetcher
+    var viewModel: DeviceFetchingViewModel
 
-    @EnvironmentObject
-    var store: FavoritesStore
-
-    @State
-    var device: DeviceViewModel?
+    public init( _ viewModel: DeviceFetchingViewModel) {
+        self.viewModel = viewModel
+    }
 
     public var body: some View {
-        if let device = self.device {
-            DeviceView(device: device)
-                .navigationBarTitle(Text(device.name),
-                                    displayMode: .inline)
-                .navigationBarItems(trailing: navigationBarButtons(for: device))
-                .background(Color(.lightGray))
-                .refreshable {
-                    fetcher.fetch(deviceID: deviceId)
-                }
-                .onReceive(fetcher.$state) { state in
-                    update(for: state)
-                }
-        } else {
-            Text(fetcher.state.displayText)
+        switch viewModel.fetchingState {
+        case .empty:
+            Text("")
                 .font(.title)
                 .onAppear {
-                    fetcher.fetchIfNeeded(deviceID: deviceId)
+                    viewModel.viewAppeared()
                 }
-                .onReceive(fetcher.$state) { state in
-                    update(for: state)
+        case let .fetching(text), let .failed(text):
+            Text(text)
+                .font(.title)
+                .onAppear {
+                    viewModel.viewAppeared()
                 }
-        }
-    }
-
-    @ViewBuilder
-    func navigationBarButtons(for device: DeviceViewModel) -> some View {
-        HStack {
-            if containsModel(withId: device.id) {
-                Button(action: {
-                    self.store.remove(withId: device.id)
-                }) {
-                    Image(systemName: "heart.fill")
-                }
-            } else {
-                Button(action: {
-                    let deviceModel = DeviceCellModel(id: device.id,
-                                                      name: device.name,
-                                                      cityName: device.cityName,
-                                                      userName: device.ownerName)
-                    self.store.append(deviceModel)
-                }) {
-                    Image(systemName: "heart")
-                }
+        case let .fetched(fetched):
+            let _ = Self._printChanges()
+            DeviceView(device: .init(device: fetched.device,
+                                     measurements: fetched.measurements,
+                                     store: store))
+            .navigationBarTitle(Text(fetched.device.name),
+                                displayMode: .inline)
+            .navigationBarItems(trailing: Button(action: viewModel.tappedFavoriteButton) {
+                viewModel.isFavorite
+                ? Image(systemName: "heart.fill")
+                : Image(systemName: "heart")
+            })
+            .background(Color(.lightGray))
+            .refreshable {
+                viewModel.pulledRefresh()
             }
         }
-    }
 
-    func containsModel(withId id: Int) -> Bool {
-        store.devices.contains{ $0.id == id }
-    }
-
-    func update(for state: DeviceFetchState) {
-        switch state {
-        case .empty, .fetching:
-            break
-        case let .fetched(device):
-            self.device = device
-        case .failed:
-            self.device = nil
-        }
     }
 }
 
 #if DEBUG
-struct DeviceFetchingView_Previews: PreviewProvider {
-    static var previews: some View {
+extension DeviceFetchingViewModel {
+    static func mocked() -> DeviceFetchingViewModel {
         let data = PreviewData.loadTestData(withFileName: "DeviceResponse")
         let apiClient = Client.mocked(width: data)
         let deviceFetcher = DeviceFetcher(client: apiClient)
-        deviceFetcher.fetch(deviceID: 1)
-        return DeviceFetchingView.init(deviceId: 1, client: apiClient)
+        let storedDevice = [DeviceCellModel]()
+
+        return DeviceFetchingViewModel(deviceID: 1,
+                                       fetcher: deviceFetcher,
+                                       store: .mocked(storedDevice))
+    }
+}
+
+struct DeviceFetchingView_Previews: PreviewProvider {
+    static var previews: some View {
+        DeviceFetchingView(.mocked())
     }
 }
 #endif

@@ -75,7 +75,7 @@ public struct SCKMeasurement: Codable, Hashable {
 }
 
 public struct Sensor: Codable, Hashable {
-    let deviceId: Int
+    let deviceID: Int
     let sensorKey: String // "t"
     let sensorId: Int
     let componentId: Int
