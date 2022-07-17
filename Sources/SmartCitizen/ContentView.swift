@@ -2,12 +2,12 @@ import SwiftUI
 import Combine
 import MapKit
 
-final public class SensorGraphXLabelCache: ObservableObject {
+public final class SensorGraphXLabelCache: ObservableObject {
     public init(){}
     var cache = [String : CGFloat]()
 }
 
-public class AppState: ObservableObject {
+public final class AppState: ObservableObject {
     let favoritesViewModel: FavoritesViewModel
     let mapViewModel: MapViewModel
     let searchViewModel: SearchViewModel

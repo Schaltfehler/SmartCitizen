@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-public class DeviceFetchingViewModel: ObservableObject {
+public final class DeviceFetchingViewModel: ObservableObject {
     private var fetchSubscription: AnyCancellable?
 
     @ObservedObject

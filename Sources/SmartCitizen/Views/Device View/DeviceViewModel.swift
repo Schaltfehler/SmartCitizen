@@ -2,8 +2,7 @@ import Foundation
 import CoreLocation
 import Combine
 
-
-public class DeviceViewModel: ObservableObject, Identifiable {
+public final class DeviceViewModel: ObservableObject, Identifiable {
     public let id: Int
     public let ownerName: String
     public let cityName: String

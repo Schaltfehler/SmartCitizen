@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-public class SettingsStore: ObservableObject {
+public final class SettingsStore: ObservableObject {
     public init() {}
     
     @AppStorage("shouldShowAqi")

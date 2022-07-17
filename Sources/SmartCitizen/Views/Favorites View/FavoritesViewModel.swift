@@ -1,6 +1,6 @@
 import Foundation
 
-public class FavoritesViewModel: ObservableObject {
+public final class FavoritesViewModel: ObservableObject {
     let title: String
 
     @Published

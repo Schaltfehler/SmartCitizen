@@ -2,7 +2,7 @@ import Foundation
 import MapKit
 import Combine
 
-public class MapViewModel: ObservableObject {
+public final class MapViewModel: ObservableObject {
     let region: MKCoordinateRegion
 
     private let fetcher: WorldMapFetcher
