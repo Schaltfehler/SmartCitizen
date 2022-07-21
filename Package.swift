@@ -6,24 +6,34 @@ let package = Package(
     name: "SmartCitizen",
     platforms: [.iOS(.v15)],
     products: [
-        .library(name: "SmartCitizen", targets: ["SmartCitizen"]),
+        .library(name: "Views", targets: ["Views"]),
+        .library(name: "Domain", targets: ["Domain"]),
+        .library(name: "Network", targets: ["Network"]),
+        .library(name: "Models", targets: ["Models"]),
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-algorithms", from: "1.0.0"),
         .package(url: "https://github.com/apple/swift-numerics", from: "1.0.0"),
     ],
     targets: [
-        .target(name: "SmartCitizen",
+        .target(name: "Views",
                 dependencies: [
                     .product(name: "Algorithms", package: "swift-algorithms"),
                     .product(name: "Numerics", package: "swift-numerics"),
-                ]
-               ),
-        .testTarget(name: "SmartCitizenTests",
-                    dependencies: ["SmartCitizen"],
-                    resources: [
-                        .copy("DebugData/json")
-                    ]
-                   )
+                    "Domain",
+                    "Network",
+                    "Models",
+                ]),
+        .target(name: "Domain", dependencies: ["Network", "Models"]),
+        .target(name: "Network", dependencies: ["Models"]),
+        .target(name: "Models"),
+        .testTarget(
+            name: "SmartCitizenTests",
+            dependencies: [
+                "Network",
+                "Models",
+            ],
+            resources: [ .copy("DebugData/json") ]
+        ),
     ]
 )

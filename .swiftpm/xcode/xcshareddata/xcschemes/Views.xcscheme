@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A259061D28647383002DDE5F"
-               BuildableName = "Smart Citizen.app"
-               BlueprintName = "SmartCitizenApp"
-               ReferencedContainer = "container:SmartCitizen.xcodeproj">
+               BlueprintIdentifier = "Views"
+               BuildableName = "Views"
+               BlueprintName = "Views"
+               ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -40,16 +40,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A259061D28647383002DDE5F"
-            BuildableName = "Smart Citizen.app"
-            BlueprintName = "SmartCitizenApp"
-            ReferencedContainer = "container:SmartCitizen.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -57,16 +47,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A259061D28647383002DDE5F"
-            BuildableName = "Smart Citizen.app"
-            BlueprintName = "SmartCitizenApp"
-            ReferencedContainer = "container:SmartCitizen.xcodeproj">
+            BlueprintIdentifier = "Views"
+            BuildableName = "Views"
+            BlueprintName = "Views"
+            ReferencedContainer = "container:">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

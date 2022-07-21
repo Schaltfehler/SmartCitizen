@@ -1,6 +1,6 @@
 import Foundation
-
-@testable import SmartCitizen
+import Network
+import Models
 
 final class TestData {
 
