@@ -1,5 +1,7 @@
 import XCTest
-@testable import SmartCitizen
+import Models
+import Network
+
 
 final class SmartCitizenTests: XCTestCase {
     func testDateDecoding() {
