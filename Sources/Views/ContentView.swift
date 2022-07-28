@@ -4,11 +4,6 @@ import MapKit
 import Models
 import Domain
 
-public final class SensorGraphXLabelCache: ObservableObject {
-    public init(){}
-    var cache = [String : CGFloat]()
-}
-
 public final class AppState: ObservableObject {
     let favoritesViewModel: FavoritesViewModel
     let mapViewModel: MapViewModel

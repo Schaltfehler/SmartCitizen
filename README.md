@@ -11,6 +11,8 @@ Add the following Key Values to the config file to make the app compile.
 DEVELOPMENT_TEAM = YOUR_TEAM_ID
 PRODUCT_BUNDLE_IDENTIFIER = YOUR_BUNDLE_ID
 PRODUCT_NAME = Smart Citizen
+CURRENT_PROJECT_VERSION = 1234
+MARKETING_VERSION = 1.0
 ```
 
 # Links

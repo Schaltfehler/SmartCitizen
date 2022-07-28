@@ -1,6 +1,7 @@
 import Foundation
 import Algorithms
 import SwiftUI
+import Domain
 
 private struct ColumnLines: Shape {
     let columns: [CGFloat]
