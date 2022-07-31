@@ -50,6 +50,7 @@
 		A20251F6285B50DA0023F743 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A20251F7285B50DA0023F743 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		A20251F8285B50DA0023F743 /* SmartCitizenApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartCitizenApp.swift; sourceTree = "<group>"; };
+		A24E12052896454000C20326 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A2590605286470CE002DDE5F /* iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOS.entitlements; sourceTree = "<group>"; };
 		A259061E28647383002DDE5F /* Smart Citizen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smart Citizen.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2590631286476C6002DDE5F /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
@@ -84,6 +85,7 @@
 		A20251F5285B50DA0023F743 /* SmartCitizenApp */ = {
 			isa = PBXGroup;
 			children = (
+				A24E12052896454000C20326 /* Info.plist */,
 				A259063528647B1F002DDE5F /* Preview Content */,
 				A2590631286476C6002DDE5F /* Config.xcconfig */,
 				A2590605286470CE002DDE5F /* iOS.entitlements */,
@@ -288,6 +290,7 @@
 				DEVELOPMENT_TEAM = JNSL3B72G6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SmartCitizenApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -316,6 +319,7 @@
 				DEVELOPMENT_TEAM = JNSL3B72G6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SmartCitizenApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
