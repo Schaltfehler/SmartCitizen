@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A21AA5D928963840005DD620 /* Views in Frameworks */ = {isa = PBXBuildFile; productRef = A21AA5D828963840005DD620 /* Views */; };
 		A259062C286473F0002DDE5F /* SmartCitizenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20251F8285B50DA0023F743 /* SmartCitizenApp.swift */; };
 		A259063328647B0B002DDE5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A20251F6285B50DA0023F743 /* Assets.xcassets */; };
 		A259063428647B0B002DDE5F /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A20251F7285B50DA0023F743 /* Icons.xcassets */; };
 		A259063728647B1F002DDE5F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A259063628647B1F002DDE5F /* Preview Assets.xcassets */; };
-		A2AD55FF28647DB80022D7DD /* SmartCitizen in Frameworks */ = {isa = PBXBuildFile; productRef = A2AD55FE28647DB80022D7DD /* SmartCitizen */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2AD55FF28647DB80022D7DD /* SmartCitizen in Frameworks */,
+				A21AA5D928963840005DD620 /* Views in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,7 +100,7 @@
 			);
 			name = SmartCitizenApp;
 			packageProductDependencies = (
-				A2AD55FE28647DB80022D7DD /* SmartCitizen */,
+				A21AA5D828963840005DD620 /* Views */,
 			);
 			productName = SmartCitizen;
 			productReference = A259061E28647383002DDE5F /* Smart Citizen.app */;
@@ -361,9 +361,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		A2AD55FE28647DB80022D7DD /* SmartCitizen */ = {
+		A21AA5D828963840005DD620 /* Views */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = SmartCitizen;
+			productName = Views;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

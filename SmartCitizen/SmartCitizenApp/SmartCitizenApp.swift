@@ -1,5 +1,7 @@
 import SwiftUI
-import SmartCitizen
+import Views
+import Domain
+import Network
 
 @main
 struct SmartCitizenApp: App {
