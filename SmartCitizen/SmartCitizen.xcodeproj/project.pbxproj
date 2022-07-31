@@ -7,12 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A21AA5D928963840005DD620 /* Views in Frameworks */ = {isa = PBXBuildFile; productRef = A21AA5D828963840005DD620 /* Views */; };
+		A21AA5DB289639C6005DD620 /* Views in Frameworks */ = {isa = PBXBuildFile; productRef = A21AA5DA289639C6005DD620 /* Views */; };
 		A259062C286473F0002DDE5F /* SmartCitizenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20251F8285B50DA0023F743 /* SmartCitizenApp.swift */; };
 		A259063328647B0B002DDE5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A20251F6285B50DA0023F743 /* Assets.xcassets */; };
 		A259063428647B0B002DDE5F /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A20251F7285B50DA0023F743 /* Icons.xcassets */; };
 		A259063728647B1F002DDE5F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A259063628647B1F002DDE5F /* Preview Assets.xcassets */; };
+		A28DD70D2892978700EBAFE5 /* Views in Frameworks */ = {isa = PBXBuildFile; productRef = A28DD70C2892978700EBAFE5 /* Views */; };
+		A2A6B8152892A51300A89374 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A20251F6285B50DA0023F743 /* Assets.xcassets */; };
+		A2A6B8162892A52A00A89374 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A259063628647B1F002DDE5F /* Preview Assets.xcassets */; };
+		A2AD5372289294A30089A2B3 /* SmartCitizenClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AD5371289294A30089A2B3 /* SmartCitizenClip.swift */; };
+		A2AD5374289294A30089A2B3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AD5373289294A30089A2B3 /* ContentView.swift */; };
+		A2AD537F289294A30089A2B3 /* Smart Citizen Clip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = A2AD536F289294A30089A2B3 /* Smart Citizen Clip.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A2AD5383289295EF0089A2B3 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A20251F7285B50DA0023F743 /* Icons.xcassets */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A2AD537C289294A30089A2B3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A2F0E4082786FBD0000514BF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A2AD536E289294A30089A2B3;
+			remoteInfo = SmartCitizenClip;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A2AD537E289294A30089A2B3 /* Embed App Clips */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/AppClips";
+			dstSubfolderSpec = 16;
+			files = (
+				A2AD537F289294A30089A2B3 /* Smart Citizen Clip.app in Embed App Clips */,
+			);
+			name = "Embed App Clips";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		A20251EB285B4B6E0023F743 /* SmartCitizen */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SmartCitizen; path = ..; sourceTree = "<group>"; };
@@ -23,6 +54,11 @@
 		A259061E28647383002DDE5F /* Smart Citizen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smart Citizen.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2590631286476C6002DDE5F /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		A259063628647B1F002DDE5F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A2AD536F289294A30089A2B3 /* Smart Citizen Clip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smart Citizen Clip.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2AD5371289294A30089A2B3 /* SmartCitizenClip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartCitizenClip.swift; sourceTree = "<group>"; };
+		A2AD5373289294A30089A2B3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A2AD537A289294A30089A2B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A2AD537B289294A30089A2B3 /* SmartCitizenClip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SmartCitizenClip.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,7 +66,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A21AA5D928963840005DD620 /* Views in Frameworks */,
+				A21AA5DB289639C6005DD620 /* Views in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2AD536C289294A30089A2B3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A28DD70D2892978700EBAFE5 /* Views in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,11 +109,23 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		A2AD5370289294A30089A2B3 /* SmartCitizenClip */ = {
+			isa = PBXGroup;
+			children = (
+				A2AD5371289294A30089A2B3 /* SmartCitizenClip.swift */,
+				A2AD5373289294A30089A2B3 /* ContentView.swift */,
+				A2AD537A289294A30089A2B3 /* Info.plist */,
+				A2AD537B289294A30089A2B3 /* SmartCitizenClip.entitlements */,
+			);
+			path = SmartCitizenClip;
+			sourceTree = "<group>";
+		};
 		A2F0E4072786FBD0000514BF = {
 			isa = PBXGroup;
 			children = (
 				A20251EB285B4B6E0023F743 /* SmartCitizen */,
 				A20251F5285B50DA0023F743 /* SmartCitizenApp */,
+				A2AD5370289294A30089A2B3 /* SmartCitizenClip */,
 				A2F0E4152786FBD1000514BF /* Products */,
 				A20ECA25285B515600987815 /* Frameworks */,
 			);
@@ -79,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				A259061E28647383002DDE5F /* Smart Citizen.app */,
+				A2AD536F289294A30089A2B3 /* Smart Citizen Clip.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -93,18 +150,40 @@
 				A259061A28647383002DDE5F /* Sources */,
 				A259061B28647383002DDE5F /* Frameworks */,
 				A259061C28647383002DDE5F /* Resources */,
+				A2AD537E289294A30089A2B3 /* Embed App Clips */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A2AD537D289294A30089A2B3 /* PBXTargetDependency */,
+			);
+			name = SmartCitizenApp;
+			packageProductDependencies = (
+				A21AA5DA289639C6005DD620 /* Views */,
+			);
+			productName = SmartCitizen;
+			productReference = A259061E28647383002DDE5F /* Smart Citizen.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A2AD536E289294A30089A2B3 /* SmartCitizenClip */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A2AD5382289294A30089A2B3 /* Build configuration list for PBXNativeTarget "SmartCitizenClip" */;
+			buildPhases = (
+				A2AD536B289294A30089A2B3 /* Sources */,
+				A2AD536C289294A30089A2B3 /* Frameworks */,
+				A2AD536D289294A30089A2B3 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = SmartCitizenApp;
+			name = SmartCitizenClip;
 			packageProductDependencies = (
-				A21AA5D828963840005DD620 /* Views */,
+				A28DD70C2892978700EBAFE5 /* Views */,
 			);
-			productName = SmartCitizen;
-			productReference = A259061E28647383002DDE5F /* Smart Citizen.app */;
-			productType = "com.apple.product-type.application";
+			productName = SmartCitizenClip;
+			productReference = A2AD536F289294A30089A2B3 /* Smart Citizen Clip.app */;
+			productType = "com.apple.product-type.application.on-demand-install-capable";
 		};
 /* End PBXNativeTarget section */
 
@@ -118,6 +197,9 @@
 				ORGANIZATIONNAME = "Frederik Vogel";
 				TargetAttributes = {
 					A259061D28647383002DDE5F = {
+						CreatedOnToolsVersion = 13.4;
+					};
+					A2AD536E289294A30089A2B3 = {
 						CreatedOnToolsVersion = 13.4;
 					};
 				};
@@ -138,6 +220,7 @@
 			projectRoot = "";
 			targets = (
 				A259061D28647383002DDE5F /* SmartCitizenApp */,
+				A2AD536E289294A30089A2B3 /* SmartCitizenClip */,
 			);
 		};
 /* End PBXProject section */
@@ -153,6 +236,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A2AD536D289294A30089A2B3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2A6B8162892A52A00A89374 /* Preview Assets.xcassets in Resources */,
+				A2A6B8152892A51300A89374 /* Assets.xcassets in Resources */,
+				A2AD5383289295EF0089A2B3 /* Icons.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -164,17 +257,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A2AD536B289294A30089A2B3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2AD5374289294A30089A2B3 /* ContentView.swift in Sources */,
+				A2AD5372289294A30089A2B3 /* SmartCitizenClip.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A2AD537D289294A30089A2B3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A2AD536E289294A30089A2B3 /* SmartCitizenClip */;
+			targetProxy = A2AD537C289294A30089A2B3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		A259062A28647383002DDE5F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A2590631286476C6002DDE5F /* Config.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SmartCitizenApp/Preview Content\"";
+				DEVELOPMENT_TEAM = JNSL3B72G6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -187,7 +298,6 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -199,10 +309,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A2590631286476C6002DDE5F /* Config.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SmartCitizenApp/Preview Content\"";
+				DEVELOPMENT_TEAM = JNSL3B72G6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -215,7 +326,67 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A2AD5380289294A30089A2B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2590631286476C6002DDE5F /* Config.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SmartCitizenClip/SmartCitizenClip.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"SmartCitizenApp/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SmartCitizenClip/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER).clip";
+				PRODUCT_NAME = "$(PRODUCT_NAME) Clip";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A2AD5381289294A30089A2B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2590631286476C6002DDE5F /* Config.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SmartCitizenClip/SmartCitizenClip.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"SmartCitizenApp/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SmartCitizenClip/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER).clip";
+				PRODUCT_NAME = "$(PRODUCT_NAME) Clip";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -349,6 +520,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		A2AD5382289294A30089A2B3 /* Build configuration list for PBXNativeTarget "SmartCitizenClip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A2AD5380289294A30089A2B3 /* Debug */,
+				A2AD5381289294A30089A2B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A2F0E40B2786FBD0000514BF /* Build configuration list for PBXProject "SmartCitizen" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -361,7 +541,11 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		A21AA5D828963840005DD620 /* Views */ = {
+		A21AA5DA289639C6005DD620 /* Views */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Views;
+		};
+		A28DD70C2892978700EBAFE5 /* Views */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Views;
 		};

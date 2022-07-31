@@ -34,7 +34,7 @@ public struct DeviceListView: View {
     public var body: some View {
         List {
             ForEach(devices) { device in
-                NavigationLink(destination: DeviceFetchingView.init(.init(deviceID: device.id,
+                NavigationLink(destination: DeviceFetchingView(.init(deviceID: device.id,
                                                                           fetcher: deviceFetcher,
                                                                           store: favoritesStore))) {
                     DeviceCell(model: device)
