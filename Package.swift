@@ -1,10 +1,10 @@
-// swift-tools-version: 5.6
+// swift-tools-version: 5.7
 
 import PackageDescription
 
 let package = Package(
     name: "SmartCitizen",
-    platforms: [.iOS(.v15)],
+    platforms: [.iOS(.v16)],
     products: [
         .library(name: "Views", targets: ["Views"]),
         .library(name: "Domain", targets: ["Domain"]),

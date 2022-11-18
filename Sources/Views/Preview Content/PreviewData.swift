@@ -5,8 +5,7 @@ import Network
 
 final class PreviewData {
     static func loadTestData(withFileName fileName: String) -> Data {
-        let bundle = Bundle(for: PreviewData.self)
-        let dataAsset = NSDataAsset(name: fileName, bundle: bundle)!
+        let dataAsset = NSDataAsset(name: fileName)!
 
         return dataAsset.data
     }
@@ -36,7 +35,7 @@ final class PreviewData {
     }
 
     static func loadReadingsFullDay() -> Readings {
-        let data = PreviewData.loadTestData(withFileName: "Readings-FullDay")
+        let data = SensorFetcher.FullDayReadings
         let decoder = Client.jsonDecoder()
         let measurements = try! decoder.decode(Readings.self, from: data)
 

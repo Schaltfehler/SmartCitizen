@@ -11,10 +11,8 @@
 		A259062C286473F0002DDE5F /* SmartCitizenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20251F8285B50DA0023F743 /* SmartCitizenApp.swift */; };
 		A259063328647B0B002DDE5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A20251F6285B50DA0023F743 /* Assets.xcassets */; };
 		A259063428647B0B002DDE5F /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A20251F7285B50DA0023F743 /* Icons.xcassets */; };
-		A259063728647B1F002DDE5F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A259063628647B1F002DDE5F /* Preview Assets.xcassets */; };
 		A28DD70D2892978700EBAFE5 /* Views in Frameworks */ = {isa = PBXBuildFile; productRef = A28DD70C2892978700EBAFE5 /* Views */; };
 		A2A6B8152892A51300A89374 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A20251F6285B50DA0023F743 /* Assets.xcassets */; };
-		A2A6B8162892A52A00A89374 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A259063628647B1F002DDE5F /* Preview Assets.xcassets */; };
 		A2AD5372289294A30089A2B3 /* SmartCitizenClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AD5371289294A30089A2B3 /* SmartCitizenClip.swift */; };
 		A2AD5374289294A30089A2B3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AD5373289294A30089A2B3 /* ContentView.swift */; };
 		A2AD537F289294A30089A2B3 /* Smart Citizen Clip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = A2AD536F289294A30089A2B3 /* Smart Citizen Clip.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -54,7 +52,6 @@
 		A2590605286470CE002DDE5F /* iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOS.entitlements; sourceTree = "<group>"; };
 		A259061E28647383002DDE5F /* Smart Citizen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smart Citizen.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2590631286476C6002DDE5F /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
-		A259063628647B1F002DDE5F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A2AD536F289294A30089A2B3 /* Smart Citizen Clip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smart Citizen Clip.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2AD5371289294A30089A2B3 /* SmartCitizenClip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartCitizenClip.swift; sourceTree = "<group>"; };
 		A2AD5373289294A30089A2B3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -86,7 +83,6 @@
 			isa = PBXGroup;
 			children = (
 				A24E12052896454000C20326 /* Info.plist */,
-				A259063528647B1F002DDE5F /* Preview Content */,
 				A2590631286476C6002DDE5F /* Config.xcconfig */,
 				A2590605286470CE002DDE5F /* iOS.entitlements */,
 				A20251F6285B50DA0023F743 /* Assets.xcassets */,
@@ -101,14 +97,6 @@
 			children = (
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A259063528647B1F002DDE5F /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				A259063628647B1F002DDE5F /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		A2AD5370289294A30089A2B3 /* SmartCitizenClip */ = {
@@ -232,7 +220,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A259063728647B1F002DDE5F /* Preview Assets.xcassets in Resources */,
 				A259063328647B0B002DDE5F /* Assets.xcassets in Resources */,
 				A259063428647B0B002DDE5F /* Icons.xcassets in Resources */,
 			);
@@ -242,7 +229,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2A6B8162892A52A00A89374 /* Preview Assets.xcassets in Resources */,
 				A2A6B8152892A51300A89374 /* Assets.xcassets in Resources */,
 				A2AD5383289295EF0089A2B3 /* Icons.xcassets in Resources */,
 			);
@@ -286,7 +272,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"SmartCitizenApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"../Sources/Views/Preview Content\"";
 				DEVELOPMENT_TEAM = JNSL3B72G6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -296,7 +282,6 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -315,7 +300,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"SmartCitizenApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"../Sources/Views/Preview Content\"";
 				DEVELOPMENT_TEAM = JNSL3B72G6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -325,7 +310,6 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -346,7 +330,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SmartCitizenClip/SmartCitizenClip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"SmartCitizenApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"../Sources/Views/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SmartCitizenClip/Info.plist;
@@ -376,7 +360,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SmartCitizenClip/SmartCitizenClip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"SmartCitizenApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"../Sources/Views/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SmartCitizenClip/Info.plist;
@@ -451,7 +435,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -506,7 +490,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;

@@ -56,6 +56,88 @@ enum DateRange: String, CaseIterable, Identifiable {
         }
     }
 
+    var dateFormatStyle: Date.FormatStyle {
+        switch self {
+        case .year:
+            return Date.FormatStyle.dateTime.month(.abbreviated)
+        case .month:
+            return Date.FormatStyle.dateTime.day(.twoDigits)
+        case .week:
+            return Date.FormatStyle.dateTime.weekday(.abbreviated)
+        case .day:
+            return Date.FormatStyle.dateTime
+                .hour(.defaultDigits(amPM: .abbreviated))
+        case .hour:
+            return Date.FormatStyle.dateTime
+                .hour(.twoDigits(amPM: .omitted))
+                .minute(.twoDigits)
+        }
+    }
+    
+    var isPointInTime: Bool {
+        switch self {
+        case .year:
+            return false
+        case .month:
+            return true
+        case .week:
+            return false
+        case .day:
+            return true
+        case .hour:
+            return true
+        }
+    }
+
+    var strideBy: Calendar.Component {
+        switch self {
+        case .year:
+            return .month
+        case .month:
+            return .day
+        case .week:
+            return .day
+        case .day:
+            return .hour
+        case .hour:
+            return .minute
+        }
+    }
+
+    var strideCount: Int {
+        switch self {
+        case .year:
+            return 1
+        case .month:
+            return 5
+        case .week:
+            return 1
+        case .day:
+            return 3
+        case .hour:
+            return 30
+        }
+    }
+
+    var relativeInterval: String {
+        switch self {
+        case .year:
+            return "Last 12 months"
+
+        case .month:
+            return "Last 4 weeks"
+
+        case .week:
+            return "Last 7 days"
+
+        case .day:
+            return "Last 24 hours"
+
+        case .hour:
+            return "Last 3 hours"
+        }
+    }
+
     func timeInterval(for date: Date, in timeZone: TimeZone) -> TimeInterval {
         var calendar = Calendar.current
         calendar.timeZone = timeZone
@@ -77,21 +159,21 @@ enum DateRange: String, CaseIterable, Identifiable {
 }
 
 final class SensorChartViewModel: ObservableObject {
-    static var now:() -> Date = { Date() }
+    var now: () -> Date
 
     @Published
-    var dateRange: DateRange {
+    var selectedDateRange: DateRange {
         didSet {
-            currentDateInterval = SensorChartViewModel.dateInterval(with: dateRange, date: currentDate, in: timeZone)
+            currentDateInterval = Self.dateInterval(with: selectedDateRange, date: currentDate, in: timeZone, now: now())
         }
     }
 
     @Published
-    var currentDateInterval: DateInterval
+    var currentDateInterval: DateInterval = .init()
 
     var currentDate: Date {
         didSet {
-            currentDateInterval = SensorChartViewModel.dateInterval(with: dateRange, date: currentDate, in: timeZone)
+            currentDateInterval = Self.dateInterval(with: selectedDateRange, date: currentDate, in: timeZone, now: now())
         }
     }
 
@@ -112,28 +194,13 @@ final class SensorChartViewModel: ObservableObject {
     }
 
     var relativeInterval: String {
-        switch dateRange {
-        case .year:
-            return "Last 12 months"
-
-        case .month:
-            return "Last 4 weeks"
-
-        case .week:
-            return "Last 7 days"
-
-        case .day:
-            return "Last 24 hours"
-
-        case .hour:
-            return "Last 3 hours"
-        }
+        selectedDateRange.relativeInterval
     }
 
     var dateInterval: String {
         let formatter = DateIntervalFormatter()
 
-        switch dateRange {
+        switch selectedDateRange {
         case .year:
             formatter.dateTemplate = "y"
 
@@ -165,8 +232,8 @@ final class SensorChartViewModel: ObservableObject {
         formatter.dateTemplate = "MMM d HH mm"
         formatter.timeZone = timeZone
 
-        let start = readings?.readings.last?.date ?? Self.now()
-        let end = readings?.readings.first?.date ?? Self.now()
+        let start = readings?.readings.last?.date ?? now()
+        let end = readings?.readings.first?.date ?? now()
 
         let interval = DateInterval(start: start, end: end)
 
@@ -175,18 +242,19 @@ final class SensorChartViewModel: ObservableObject {
 
     private var subscriptions = Set<AnyCancellable>()
 
-    init(dateRange: DateRange, sensor: SensorModel, timeZone: TimeZone, fetcher: SensorFetcher, readings: Readings? = nil) {
-        self.dateRange = dateRange
+    init(dateRange: DateRange, sensor: SensorModel, timeZone: TimeZone, fetcher: SensorFetcher, readings: Readings? = nil, now: @escaping () -> Date = Date.init) {
+        self.selectedDateRange = dateRange
         self.timeZone = timeZone
         self.sensor = sensor
         self.readings = readings
         self.fetcher = fetcher
-        self.currentDate = Self.now()
+        self.currentDate = now()
+        self.now = now
 
-        currentDateInterval = SensorChartViewModel.dateInterval(with: dateRange, date: currentDate, in: timeZone)
+        currentDateInterval = Self.dateInterval(with: dateRange, date: currentDate, in: timeZone, now: now())
     }
 
-    static func dateInterval(with dateRange: DateRange, date: Date, in timeZone: TimeZone) -> DateInterval {
+    static func dateInterval(with dateRange: DateRange, date: Date, in timeZone: TimeZone, now: Date) -> DateInterval {
         var calendar = Calendar.current
         calendar.timeZone = timeZone
         calendar.firstWeekday = 2 // Monday
@@ -194,8 +262,6 @@ final class SensorChartViewModel: ObservableObject {
         let timeInterval = dateRange.timeInterval(for: date, in: timeZone)
         var dateInterval = calendar.dateInterval(of: dateRange.calendarComponent, for: date)!
         dateInterval = DateInterval(start: dateInterval.end - timeInterval, end: dateInterval.end)
-
-        let now = Self.now()
 
         if dateInterval.contains(now) {
             let duration = dateInterval.duration
@@ -211,7 +277,7 @@ final class SensorChartViewModel: ObservableObject {
         calendar.timeZone = timeZone
         calendar.firstWeekday = 2 // Monday
 
-        let currentInterval = calendar.dateInterval(of: dateRange.calendarComponent, for: Self.now())!
+        let currentInterval = calendar.dateInterval(of: selectedDateRange.calendarComponent, for: now())!
         return currentInterval.contains(currentDateInterval.end - 1)
     }
 
@@ -242,7 +308,7 @@ final class SensorChartViewModel: ObservableObject {
     func fetch() {
         // overshoot by 2min, so we can capture the full range
         let interval = DateInterval(start: currentDateInterval.start, end: currentDateInterval.end.advanced(by: 120))
-        fetcher.requestReadingsFor(deviceID: deviceID, sensorId: sensorId, interval: interval, rollup: dateRange.rollup)
+        fetcher.requestReadingsFor(deviceID: deviceID, sensorId: sensorId, interval: interval, rollup: selectedDateRange.rollup)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] (completion: Subscribers.Completion<Error>) in
                 if case .failure(_) = completion {

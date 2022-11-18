@@ -90,8 +90,17 @@ public struct Readings: Codable, Hashable {
     public let from: Date
     public let to: Date
     public let readings: [SensorReading]
+    public var valueRange: Range<Double> {
+        let maxValue = readings.map{$0.value}.max() ?? 1.0
+        let minValue = readings.map{$0.value}.min() ?? 0.0
+        let valueRange = Range<Double>(uncheckedBounds: (lower: minValue, upper: maxValue))
 
-    public struct SensorReading: Codable, Hashable {
+        return valueRange
+    }
+
+
+    public struct SensorReading: Codable, Hashable, Identifiable {
+        public let id = UUID()
         public let date: Date
         public let value: Double
 

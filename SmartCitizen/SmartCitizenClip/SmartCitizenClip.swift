@@ -22,7 +22,6 @@ struct SmartCitizenClip: App {
     let favoriteStore = FavoritesStore.default
     let deviceFetcher = DeviceFetcher(client: Client())
     let settingsStore = SettingsStore()
-    let graphCache = SensorGraphXLabelCache()
 
     @StateObject
     var device = SmartCitizenDeviceClip()
@@ -35,7 +34,6 @@ struct SmartCitizenClip: App {
                 .environmentObject(favoriteStore)
                 .environmentObject(deviceFetcher)
                 .environmentObject(settingsStore)
-                .environmentObject(graphCache)
                 .environmentObject(device)
 
         }
