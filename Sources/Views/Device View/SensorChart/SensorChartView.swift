@@ -2,9 +2,21 @@ import SwiftUI
 import Combine
 import Charts
 
+struct RangeDomainKey: PreferenceKey {
+    static let defaultValue = [Double]()
+    static func reduce(value: inout [Double], nextValue: () -> [Double]) {
+        value = value.isEmpty
+        ? nextValue()
+        : value
+    }
+}
+
 public struct SensorChartView: View {
     @Environment(\.colorScheme)
     var colorScheme
+
+    @State
+    private var yDomain: [Double]?
 
     @ObservedObject
     var model: SensorChartViewModel
@@ -53,11 +65,7 @@ public struct SensorChartView: View {
                         )
                         .accessibilityLabel("\(item.value)")
                     }
-                    .foregroundStyle(
-                        .linearGradient(Gradient.airQualtiy(readings.valueRange),
-                                        startPoint: .top,
-                                        endPoint: .bottom)
-                    )
+                    .foregroundStyle(gradiant(model.sensor.type))
                     .alignsMarkStylesWithPlotArea()
                     .interpolationMethod(.monotone)
                     .symbol(by: .value("Value", model.sensor.unit))
@@ -92,7 +100,18 @@ public struct SensorChartView: View {
                         )
                     }
                 }
-                .chartYAxis { AxisMarks(preset: .extended, position: .leading) }
+                .chartOverlay { proxy in
+                    Color.clear.preference(key: RangeDomainKey.self,
+                                           value: proxy.yDomain(dataType: Double.self))
+                }
+                .onPreferenceChange(RangeDomainKey.self) {
+                    yDomain = $0
+                }
+                .chartYAxis {
+                    AxisMarks(preset: .extended,
+                              position: .leading,
+                              values: .automatic(desiredCount: 5))
+                }
                 .chartLegend(position: .top, alignment: .topLeading) {
                     Text(model.sensor.unit)
                         .font(.subheadline)
@@ -127,6 +146,21 @@ public struct SensorChartView: View {
             model.fetch()
         }
     }
+
+    func gradiant(_ type: MeasurementType) -> LinearGradient {
+        switch type {
+        case .light, .noise, .temperature, .humidity, .pressure, .co2, .battery, .unknownsensor:
+            return LinearGradient(colors: [.clear, .blue], startPoint: .bottom, endPoint: .top)
+        case .particlePM1, .particlePM2_5, .particlePM10:
+            return LinearGradient.linearGradient(
+                Gradient.airQualtiy(
+                    minValue: yDomain?.min() ?? 0,
+                    maxValue: yDomain?.max() ?? 0
+                ),
+                startPoint: .top,
+                endPoint: .bottom)
+        }
+    }
 }
 
 
@@ -136,7 +170,7 @@ struct SensorChartView_Previews: PreviewProvider {
     static var previews: some View {
         let fetcher = SensorFetcher.mockedWithFullDayReadings()
         let model = SensorChartViewModel(
-            dateRange: .day,
+            dateRange: .hour,
             sensor: SensorModel.mocked,
             timeZone: TimeZone(abbreviation: "JST")!,
             fetcher: fetcher,

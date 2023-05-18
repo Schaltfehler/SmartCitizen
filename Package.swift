@@ -4,7 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "SmartCitizen",
-    platforms: [.iOS(.v16)],
+    platforms: [.iOS("16.4.0")],
     products: [
         .library(name: "Views", targets: ["Views"]),
         .library(name: "Domain", targets: ["Domain"]),

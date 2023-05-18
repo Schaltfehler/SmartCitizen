@@ -2,11 +2,8 @@ import Foundation
 import SwiftUI
 
 extension Gradient {
-    static func airQualtiy(_ range: Range<Double>) -> Gradient {
-
-        let minValue = range.lowerBound
-        let maxValue = range.upperBound
-
+    static func airQualtiy(minValue: Double, maxValue: Double) -> Gradient {
+        
         let level1Color = Color(AQI.level1(0).color)
         let level2Color = Color(AQI.level2(0).color)
         let level3Color = Color(AQI.level3(0).color)
