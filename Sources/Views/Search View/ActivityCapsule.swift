@@ -47,7 +47,7 @@ public struct ActivityCapsule: View {
     }
 }
 
-
+#if DEBUG
 struct ActivityCapsule_Previews: PreviewProvider {
 
     @State
@@ -61,3 +61,4 @@ struct ActivityCapsule_Previews: PreviewProvider {
         })
     }
 }
+#endif

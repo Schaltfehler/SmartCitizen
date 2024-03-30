@@ -14,9 +14,10 @@ public struct DateView: View {
         Text(dateFormatter.string(from: date))
     }
 }
-
+#if DEBUG
 struct DateView_Previews: PreviewProvider {
     static var previews: some View {
         DateView(date: Date())
     }
 }
+#endif

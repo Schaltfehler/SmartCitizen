@@ -126,6 +126,7 @@ extension SCKMapView {
     }
 }
 
+#if DEBUG
 struct SCKMapView_Previews: PreviewProvider {
     static var previews: some View {
         SCKMapView(startRegion: .init(center: .init(), span: .init()),
@@ -135,3 +136,4 @@ struct SCKMapView_Previews: PreviewProvider {
         )
     }
 }
+#endif

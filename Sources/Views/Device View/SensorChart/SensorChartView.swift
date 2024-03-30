@@ -163,7 +163,7 @@ public struct SensorChartView: View {
     }
 }
 
-
+#if DEBUG
 struct SensorChartView_Previews: PreviewProvider {
     static let readings = PreviewData.loadReadingsFullDay()
     static let end = { Self.readings.readings.first!.date }()
@@ -182,5 +182,4 @@ struct SensorChartView_Previews: PreviewProvider {
         return SensorChartView(model: model)
     }
 }
-
-
+#endif
