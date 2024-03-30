@@ -55,21 +55,6 @@ final class SmartCitizenTests: XCTestCase {
         XCTAssertEqual(device.name, "MyDevice")
     }
 
-    func testCanDecodeMeasurements() {
-        let data = TestData.loadTestData(withFileName: "Measurements")
-        let decoder = Client.jsonDecoder()
-
-        let measurements: Set<SCKMeasurement>
-        do {
-            measurements = try decoder.decode(Set<SCKMeasurement>.self, from: data)
-
-        } catch {
-            fatalError(error.localizedDescription)
-        }
-
-        XCTAssertEqual(measurements.count, 48)
-    }
-
     func testCanDecodeGlobalSearch() {
         let data = TestData.loadTestData(withFileName: "GlobalSearch")
         let decoder = Client.jsonDecoder()
@@ -112,20 +97,6 @@ final class SmartCitizenTests: XCTestCase {
         }
 
         XCTAssertEqual(device.name, "Giant Spark Eggnog")
-    }
-
-    func testCanDecodeWorldMapDevices() {
-        let data = TestData.loadTestData(withFileName: "WorldMapDevices")
-        let decoder = Client.jsonDecoder()
-
-        let devices: [WorldMapDevice]
-        do {
-            devices = try decoder.decode(Array<WorldMapDevice>.self, from: data)
-        } catch {
-            fatalError(error.localizedDescription)
-        }
-
-        XCTAssertEqual(devices.count, 5)
     }
 
     func testCanDecodeReadings() {

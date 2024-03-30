@@ -120,12 +120,10 @@ public final class DeviceViewModel: ObservableObject, Identifiable {
 }
 
 extension DeviceViewModel {
-    public convenience init(device: Device, measurements: [SCKMeasurement], store: SettingsStore) {
-        let measurementDict = Dictionary(uniqueKeysWithValues: measurements.map {($0.id, $0)})
+    public convenience init(device: Device, store: SettingsStore) {
         let measurments: [MeasurementViewModel] = device.data.sensors
             .map { (sensor: Device.DataObject.Sensor) in
-                let measurement = measurementDict[sensor.measurementId]
-                return MeasurementViewModel.init(sensor: sensor, measurement: measurement)
+                MeasurementViewModel(sensor: sensor)
             }
             .sorted{ $0.name.lowercased() < $1.name.lowercased() }
 
@@ -143,7 +141,7 @@ extension DeviceViewModel {
 
         self.init(id: device.id,
                   ownerName: device.owner.username,
-                  cityName: device.data.location.city ?? "-",
+                  cityName: device.data.location?.city ?? "?",
                   name: device.name,
                   description: device.description ?? "-",
                   state: device.state,
@@ -151,6 +149,5 @@ extension DeviceViewModel {
                   lastRecorded: device.lastReadingAt ?? Date(timeIntervalSince1970: 0),
                   measurments: measurments,
                   store: store)
-
     }
 }

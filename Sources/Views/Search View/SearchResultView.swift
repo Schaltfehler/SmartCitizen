@@ -42,7 +42,7 @@ struct SearchResultView: View {
 
 struct SearchResultView_Previews: PreviewProvider {
     static var previews: some View {
-        let device = GlobalSearch.Device(id: 1, type: "", name: "MyDevice", description: nil, ownerId: 0, ownerUsername: "Freddy", city: "Fukuoka", url: URL(fileURLWithPath: ""), countryCode: "JP", country: "Japan")
+        let device = GlobalSearch.Device(id: 1, type: "", name: "MyDevice", description: nil, ownerUsername: "Freddy", city: "Fukuoka", url: URL(fileURLWithPath: ""), countryCode: "JP", country: "Japan")
         return List {
             SearchResultView(result: .device(device))
             SearchResultView(result: .device(device))

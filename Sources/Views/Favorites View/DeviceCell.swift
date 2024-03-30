@@ -13,12 +13,16 @@ struct DeviceCell: View {
             }
             Spacer(minLength: 5)
             HStack {
-                Text("Owner: ")
-                Text(model.userName)
-                Spacer()
+                if let userName = model.userName {
+                    Text("Owner: " + userName)
+                    Spacer()
+                } else if let tags = model.tags {
+                    Text("Tags: " + tags)
+                    Spacer()
+                }
+                
                 if let cityName = model.cityName {
-                    Text("City: ")
-                    Text(cityName)
+                    Text("City: " + cityName)
                 } else {
                     EmptyView()
                 }
@@ -31,7 +35,7 @@ struct DeviceCell: View {
 #if DEBUG
 struct DeviceCell_Previews: PreviewProvider {
     static var previews: some View {
-        let model = DevicePreviewModel(id: 1, name: "SMC Hackathon", cityName: "Fukuoka", userName: "Freddy")
+        let model = DevicePreviewModel(id: 1, name: "SMC Hackathon", cityName: "Fukuoka", userName: "Freddy", tags: "outside")
         return List {
             DeviceCell(model: model)
             DeviceCell(model: model)

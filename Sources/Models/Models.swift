@@ -22,7 +22,7 @@ public struct Device: Codable, Hashable {
     public struct DataObject: Codable, Hashable {
         public let recordedAt: Date?
         public let addedAt: Date?
-        public let location: Location
+        public let location: Location?
         public let sensors: Array<Sensor>
 
         public struct Location: Codable, Hashable {
@@ -42,7 +42,7 @@ public struct Device: Codable, Hashable {
             public let unit: String
             public let createdAt: Date
             public let updatedAt: Date
-            public let measurementId: Int
+            public let measurement: Measurement
             public let uuid: UUID
 
             public let value: Double?
@@ -56,9 +56,23 @@ public struct Device: Codable, Hashable {
                 unit = try container.decode(String.self, forKey: .unit)
                 createdAt = try container.decode(Date.self, forKey: .createdAt)
                 updatedAt = try container.decode(Date.self, forKey: .updatedAt)
-                measurementId = try container.decode(Int.self, forKey: .measurementId)
+                measurement = try container.decode(Measurement.self, forKey: .measurement)
                 uuid = try container.decode(UUID.self, forKey: .uuid)
-                value = try? container.decodeIfPresent(Double.self, forKey: .value) ?? nil
+                value = try? container.decodeIfPresent(Double.self, forKey: .value)
+            }
+        }
+        
+        public struct Measurement: Codable, Hashable {
+            public let id: Int
+            public let name: String
+            public let description: String
+            
+            public init(from decoder: Decoder) throws {
+                let container = try decoder.container(keyedBy: Device.DataObject.Measurement.CodingKeys.self)
+
+                id = try container.decode(Int.self, forKey: .id)
+                name = (try? container.decode(String.self, forKey: .name)) ?? "?"
+                description = (try? container.decode(String.self, forKey: .description)) ?? "?"
             }
         }
     }
@@ -153,19 +167,17 @@ public enum GlobalSearch {
 
         public let name: String?
         public let description: String?
-        public let ownerId: Int
         public let ownerUsername: String?
         public let city: String?
         public let url: URL?
         public let countryCode: String?
         public let country: String?
 
-        public init(id: Int, type: String, name: String?, description: String?, ownerId: Int, ownerUsername: String?, city: String?, url: URL?, countryCode: String?, country: String?) {
+        public init(id: Int, type: String, name: String?, description: String?, ownerUsername: String?, city: String?, url: URL?, countryCode: String?, country: String?) {
             self.id = id
             self.type = type
             self.name = name
             self.description = description
-            self.ownerId = ownerId
             self.ownerUsername = ownerUsername
             self.city = city
             self.url = url
@@ -245,24 +257,16 @@ public struct WorldMapDevice: Codable, Hashable {
     public let name: String?
     public let description: String?
 
-    public let ownerId: Int
-    public let ownerUsername: String?
-
-    public let kitId: Int?
-
-    public let latitude: Double?
-    public let longitude: Double?
-
-    public let city: String?
-    public let countryCode: String?
+    public let location: Location
 
     public let state: String
     public let systemTags: [String]
     public let userTags: [String]
 
-    public let addedAt: Date
-    public let updatedAt: Date
-    public let lastReadingAt: Date
+    public struct Location: Codable, Hashable {
+            public let latitude: Double?
+            public let longitude: Double?
+    }
 }
 
 public enum Rollup {
@@ -301,12 +305,14 @@ public struct DevicePreviewModel: Identifiable, Equatable, Codable {
     public var id: Int
     public var name: String
     public var cityName: String?
-    public var userName: String
+    public var userName: String?
+    public var tags: String?
 
-    public init(id: Int, name: String, cityName: String? = nil, userName: String) {
+    public init(id: Int, name: String, cityName: String? = nil, userName: String? = nil, tags: String? = nil) {
         self.id = id
         self.name = name
         self.cityName = cityName
         self.userName = userName
+        self.tags = tags
     }
 }

@@ -21,7 +21,12 @@
             "unit": "ppb",
             "created_at": "2019-03-21T16:43:37Z",
             "updated_at": "2019-03-21T16:43:37Z",
-            "measurement_id": 47,
+            "measurement": {
+                "id": 47,
+                "name": "TVOC",
+                "description": "Total volatile organic compounds is a grouping of a wide range of organic chemical compounds to simplify reporting when these are present in ambient air or emissions. Many substances, such as natural gas, could be classified as volatile organic compounds (VOCs).",
+                "uuid": "c6f9a729-1782-4da1-adc9-e88b7143e45c"
+            },
             "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
             "value": 2.0,
             "raw_value": 2.0,
@@ -36,7 +41,12 @@
             "unit": "ppm",
             "created_at": "2019-03-21T16:43:37Z",
             "updated_at": "2019-03-21T16:43:37Z",
-            "measurement_id": 46,
+            "measurement": {
+                "id": 46,
+                "name": "eCO2",
+                "description": "Equivalent CO2 is the concentration of CO2 that would cause the same level of radiative forcing as a given type and concentration of greenhouse gas. Examples of such greenhouse gases are methane, perfluorocarbons, and nitrous oxide. CO2 is primarily a by-product of human metabolism and is constantly being emitted into the indoor environment by building occupants. CO2 may come from combustion sources as well. Associations of higher indoor carbon dioxide concentrations with impaired work performance and increased health symptoms have been attributed to correlation of indoor CO2 with concentrations of other indoor air pollutants that are also influenced by rates of outdoor-air ventilation.",
+                "uuid": "b6fee847-2bb6-4e1e-8e39-979612e2beb9"
+            },
             "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
             "value": 414.0,
             "raw_value": 414.0,

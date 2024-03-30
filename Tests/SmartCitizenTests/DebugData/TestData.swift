@@ -21,14 +21,6 @@ final class TestData {
 
         return device
     }
-
-    static func loadMeasurements() -> Array<SCKMeasurement> {
-        let data = TestData.loadTestData(withFileName: "Measurements")
-        let decoder = Client.jsonDecoder()
-        let measurements = try! decoder.decode(Array<SCKMeasurement>.self, from: data)
-
-        return measurements
-    }
     
     static func loadReadings() -> Readings {
         let data = TestData.loadTestData(withFileName: "Readings")

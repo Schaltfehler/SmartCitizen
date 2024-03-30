@@ -14,14 +14,14 @@ public struct MeasurementViewModel: Hashable, Identifiable, Codable {
 }
 
 extension MeasurementViewModel {
-    public init(sensor: Device.DataObject.Sensor, measurement: SCKMeasurement?) {
+    public init(sensor: Device.DataObject.Sensor) {
         id = sensor.uuid
         value = sensor.value ?? 0.0
         unit =  sensor.unit
 
-        type = MeasurementType(id: sensor.measurementId)
-        name = measurement?.name ?? sensor.name
-        description = measurement?.description ?? sensor.description
+        type = MeasurementType(id: sensor.measurement.id)
+        name = sensor.measurement.name
+        description = sensor.measurement.description
         
         sensor_id = sensor.id
     }
@@ -36,9 +36,10 @@ public enum MeasurementType: Codable {
     case particlePM1
     case particlePM2_5
     case particlePM10
+    case organicParticle
     case co2
     case battery
-    case unknownsensor
+    case unknownMeasurement
 
     init(id: Int) {
         switch id {
@@ -56,13 +57,17 @@ public enum MeasurementType: Codable {
             self = .particlePM10
         case 14: // PM2.5
             self = .particlePM2_5
-        case 27: // PM1
-            self = .particlePM1
         case 25:
             self = .pressure
+        case 27: // PM1
+            self = .particlePM1
+        case 46: // eCO2
+            self = .co2
+        case 47:
+            self = .organicParticle
 
         default:
-            self = .unknownsensor
+            self = .unknownMeasurement
         }
     }
 
@@ -78,13 +83,13 @@ public enum MeasurementType: Codable {
             return "humidity_icon"
         case .pressure:
             return "pressure_icon"
-        case .particlePM1, .particlePM2_5, .particlePM10:
+        case .particlePM1, .particlePM2_5, .particlePM10, .organicParticle:
             return "particle_icon"
         case .co2:
-            return "co_icon"
+            return "co2_icon"
         case .battery:
             return "battery_icon"
-        case .unknownsensor:
+        case .unknownMeasurement:
             return "unknownsensor_icon"
         }
     }
@@ -103,11 +108,13 @@ public enum MeasurementType: Codable {
             return 100...104
         case .particlePM1, .particlePM2_5, .particlePM10:
             return 0...10
+        case .organicParticle:
+            return 1000...3000
         case .co2:
             return 500...1500
         case .battery:
             return 0...100
-        case .unknownsensor:
+        case .unknownMeasurement:
             return 0...1
         }
     }

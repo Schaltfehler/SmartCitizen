@@ -29,10 +29,7 @@ public struct DeviceFetchingView: View {
                     viewModel.viewAppeared()
                 }
         case let .fetched(fetched):
-            let _ = Self._printChanges()
-            DeviceView(device: .init(device: fetched.device,
-                                     measurements: fetched.measurements,
-                                     store: store))
+            DeviceView(device: .init(device: fetched.device, store: store))
             .navigationBarTitle(Text(fetched.device.name),
                                 displayMode: .inline)
             .navigationBarItems(trailing: Button(action: viewModel.tappedFavoriteButton) {

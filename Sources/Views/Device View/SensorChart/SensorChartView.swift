@@ -149,7 +149,7 @@ public struct SensorChartView: View {
 
     func gradiant(_ type: MeasurementType) -> LinearGradient {
         switch type {
-        case .light, .noise, .temperature, .humidity, .pressure, .co2, .battery, .unknownsensor:
+        case .light, .noise, .temperature, .humidity, .pressure, .co2, .battery, .organicParticle, .unknownMeasurement:
             return LinearGradient(colors: [.clear, .blue], startPoint: .bottom, endPoint: .top)
         case .particlePM1, .particlePM2_5, .particlePM10:
             return LinearGradient.linearGradient(

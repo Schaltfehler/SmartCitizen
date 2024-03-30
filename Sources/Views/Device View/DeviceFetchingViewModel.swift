@@ -66,8 +66,9 @@ public final class DeviceFetchingViewModel: ObservableObject {
             let device = result.device
             let deviceModel = DevicePreviewModel(id: device.id,
                                               name: device.name,
-                                              cityName: device.data.location.city ?? "-",
-                                              userName: device.owner.username)
+                                              cityName: device.data.location?.city ?? "?",
+                                                 userName: device.owner.username,
+                                                 tags: device.systemTags.joined(separator: ", "))
             store.append(deviceModel)
             isFavorite = true
         }

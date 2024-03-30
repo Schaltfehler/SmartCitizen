@@ -174,13 +174,14 @@ public struct SensorValueView: View {
             HStack(alignment: .firstTextBaseline) {
                 Image(sensor.type.iconName)
                     .frame(width: 30)
-                Text(String(sensor.name))
-                    .bold()
+                Text(sensor.name)
                 Spacer()
                 Text(sensor.value.formatted(.number.precision(.fractionLength(0...2))) + " " + sensor.unit)
             }
             .font(.headline)
+            
 //            Text(sensor.description)
+//                .font(.subheadline)
         }
     }
 }
@@ -190,13 +191,9 @@ public struct SensorValueView: View {
 struct DeviceView_Previews: PreviewProvider {
     
     static var previews: some View {
-
         let device = PreviewData.loadDevice()
-        let measurements = PreviewData.loadMeasurements()
-
-        let viewModel = DeviceViewModel(device: device,
-                                        measurements: measurements,
-                                        store: .init())
+        print(device.data.sensors.map{$0.measurement.name})
+        let viewModel = DeviceViewModel(device: device, store: .init())
         return NavigationView {
             DeviceView(device: viewModel)
         }

@@ -64,7 +64,7 @@ public final class MapViewModel: ObservableObject {
             selectedDevices = annotations.map { annotation in
                 DevicePreviewModel(id: annotation.deviceID,
                                 name: annotation.title ?? "?",
-                                userName: annotation.subtitle ?? "?")
+                                tags: annotation.subtitle ?? "?")
             }
             actionState = 2
         }
@@ -78,11 +78,14 @@ public final class MapViewModel: ObservableObject {
             self.activityState = ActivityCapsule.State.active
         case .fetched(let results):
             self.activityState = ActivityCapsule.State.none
-
+            
             let annotations = results.compactMap{ (device: WorldMapDevice) -> SCKAnnotation? in
-                guard let latitude = device.latitude,
-                      let longitude = device.longitude
-                else { return nil }
+                guard 
+                    let latitude = device.location.latitude,
+                    let longitude = device.location.longitude
+                else {
+                    return nil
+                }
 
                 return SCKAnnotation(deviceID: device.id,
                                      title: device.name ?? "?",
