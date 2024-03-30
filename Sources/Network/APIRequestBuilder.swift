@@ -29,10 +29,6 @@ public enum APIRequestBuilder {
         return APIRequest(method: .get, path: "/v0/devices/\(id)")
     }
 
-    public static func measurements() -> APIRequest<Array<SCKMeasurement>> {
-        return APIRequest(method: .get, path: "/v0/measurements")
-    }
-
     // Date is expected to be in UTC
     public static func readings(deviceID: Int,
                                 sensorId: Int,

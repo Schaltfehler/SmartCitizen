@@ -4,38 +4,28 @@ import Network
 import Models
 
 public final class DeviceFetcher: ObservableObject {
-    public struct DeviceAndMeasurements: Hashable, Identifiable, Codable {
-        public var id: Int { device.id }
-        public let device: Device
-        public let measurements: [SCKMeasurement]
-    }
-
     private let apiClient: Client
-    private let cache: TimedCache<Int, DeviceAndMeasurements>
+    private let cache: TimedCache<Int, Device>
 
     public init(client: Client) {
         apiClient = client
-        cache = TimedCache<Int, DeviceAndMeasurements>(name: "DeviceAndMeasurements", interval: .minutes(10))
+        cache = TimedCache<Int, Device>(name: "CachedDevices", interval: .minutes(10))
     }
 
-    public func fetch(deviceID: Int) -> AnyPublisher<DeviceAndMeasurements, Error> {
+    public func fetch(deviceID: Int) -> AnyPublisher<Device, Error> {
         cache.deleteEntry(key: deviceID)
         return fetchIfNeeded(deviceID: deviceID)
     }
 
-    public func fetchIfNeeded(deviceID: Int) -> AnyPublisher<DeviceAndMeasurements, Error> {
-        let cachePublisher: AnyPublisher<DeviceAndMeasurements, Error> = cache.entryPublisher(key: deviceID)
+    public func fetchIfNeeded(deviceID: Int) -> AnyPublisher<Device, Error> {
+        let cachePublisher: AnyPublisher<Device, Error> = cache.entryPublisher(key: deviceID)
             .setFailureType(to: Error.self)
             .eraseToAnyPublisher()
-
-        let measurementsRequest = APIRequestBuilder.measurements()
-        let measurementsPublisher = apiClient.publisherWithPagination(for: measurementsRequest, pageSize: 60)
 
         let deviceRequest = APIRequestBuilder.device(withId: deviceID)
         let devicePublisher = apiClient.publisher(for: deviceRequest)
 
-        let requestPublisher: AnyPublisher<DeviceAndMeasurements, Error> = Publishers.Zip(measurementsPublisher, devicePublisher)
-            .map{ DeviceAndMeasurements(device: $1, measurements: $0) }
+        let requestPublisher: AnyPublisher<Device, Error> = devicePublisher
             .handleEvents(
                 receiveOutput: { [unowned self] in self.cache.setEntry(key: $0.id, value: $0) }
             )

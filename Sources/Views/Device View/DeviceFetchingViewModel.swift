@@ -22,7 +22,7 @@ public final class DeviceFetchingViewModel: ObservableObject {
     enum FetchingState {
         case empty
         case fetching(String)
-        case fetched(DeviceFetcher.DeviceAndMeasurements)
+        case fetched(Device)
         case failed(String)
     }
 
@@ -34,7 +34,7 @@ public final class DeviceFetchingViewModel: ObservableObject {
         self.fetchingState = .empty
     }
 
-    private func fetchDevice(with publisher: AnyPublisher<DeviceFetcher.DeviceAndMeasurements, Error>) {
+    private func fetchDevice(with publisher: AnyPublisher<Device, Error>) {
         fetchSubscription = publisher
         .receive(on: DispatchQueue.main)
         .handleEvents(receiveSubscription: { [unowned self] _ in
@@ -62,8 +62,7 @@ public final class DeviceFetchingViewModel: ObservableObject {
         if isStored {
             store.remove(withId: deviceID)
             isFavorite = false
-        } else if case let .fetched(result) = fetchingState {
-            let device = result.device
+        } else if case let .fetched(device) = fetchingState {
             let deviceModel = DevicePreviewModel(id: device.id,
                                               name: device.name,
                                               cityName: device.data.location?.city ?? "?",

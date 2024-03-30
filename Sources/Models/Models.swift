@@ -78,16 +78,6 @@ public struct Device: Codable, Hashable {
     }
 }
 
-public struct SCKMeasurement: Codable, Hashable {
-    public let id: Int
-    public let uuid: UUID
-    public let name: String
-    public let description: String
-
-    public let createdAt: Date
-    public let updatedAt: Date
-}
-
 public struct Sensor: Codable, Hashable {
     public let deviceID: Int
     public let sensorKey: String // "t"

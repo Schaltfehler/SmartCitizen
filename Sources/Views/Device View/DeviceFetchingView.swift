@@ -28,9 +28,9 @@ public struct DeviceFetchingView: View {
                 .onAppear {
                     viewModel.viewAppeared()
                 }
-        case let .fetched(fetched):
-            DeviceView(device: .init(device: fetched.device, store: store))
-            .navigationBarTitle(Text(fetched.device.name),
+        case let .fetched(device):
+            DeviceView(device: .init(device: device, store: store))
+            .navigationBarTitle(Text(device.name),
                                 displayMode: .inline)
             .navigationBarItems(trailing: Button(action: viewModel.tappedFavoriteButton) {
                 viewModel.isFavorite
