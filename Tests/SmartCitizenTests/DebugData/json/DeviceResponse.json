@@ -4,16 +4,6 @@
     "name": "MyDevice",
     "description": "Smart Citizen Kit 2.1 with Urban Sensor Board",
     "state": "has_published",
-    "hardware_info": {
-        "id": "1234",
-        "mac": "AA:BB:CC:DD:EE:FF",
-        "time": "2020-01-05T01:10:07Z",
-        "esp_bd": "",
-        "hw_ver": "2.1",
-        "sam_bd": "2019-08-20T13:25:01Z",
-        "esp_ver": "",
-        "sam_ver": "0.9.5-a91f850"
-    },
     "system_tags": [
         "indoor",
         "new",
@@ -24,19 +14,43 @@
         "Living Room"
     ],
     "is_private": false,
-    "notify_low_battery": false,
-    "notify_stopped_publishing": false,
     "last_reading_at": "2020-01-05T01:07:37Z",
-    "added_at": "2020-01-04T11:18:47Z",
+    "created_at": "2020-01-04T11:18:47Z",
     "updated_at": "2020-01-05T02:09:30Z",
-    "mac_address": "[FILTERED]",
+    "notify":
+    {
+        "stopped_publishing": true,
+        "low_battery": false
+    },
+    "device_token": "[FILTERED]",
+    "postprocessing": null,
+    "location":
+    {
+        "ip": null,
+        "exposure": "indoor",
+        "elevation": null,
+        "latitude": 30.590355,
+        "longitude": 130.401716,
+        "geohash": "wvuxp6gwh0nbq",
+        "city": "Fukuoka",
+        "country_code": "JP",
+        "country": "Japan"
+    },
+    "hardware":
+    {
+        "name": "SCK 2.1",
+        "type": "SCK",
+        "version": "2.1",
+        "slug": "sck:2,1",
+        "last_status_message": "[FILTERED]"
+    },
     "owner": {
         "id": 1234,
         "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
         "username": "USERNAME",
-        "avatar": "https://smartcitizen.s3.amazonaws.com/avatars/default.svg",
         "url": null,
-        "joined_at": "2020-01-04T11:18:45Z",
+        "avatar": "https://smartcitizen.s3.amazonaws.com/avatars/default.svg",
+        "profile_picture": "",
         "location": {
             "city": "Fukuoka",
             "country": "Japan",
@@ -45,19 +59,6 @@
         "device_ids": []
     },
     "data": {
-        "recorded_at": "2020-01-05T01:07:37Z",
-        "added_at": "2020-01-05T01:07:37Z",
-        "location": {
-            "ip": null,
-            "exposure": "indoor",
-            "elevation": null,
-            "latitude": 30.590355,
-            "longitude": 130.401716,
-            "geohash": "wvuxp6gwh0nbq",
-            "city": "Fukuoka",
-            "country_code": "JP",
-            "country": "Japan"
-        },
         "sensors": [
             {
                 "id": 113,
@@ -67,6 +68,8 @@
                 "unit": "ppb",
                 "created_at": "2019-03-21T16:43:37Z",
                 "updated_at": "2019-03-21T16:43:37Z",
+                "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
+                "default_key": "tvoc",
                 "measurement": {
                     "id": 47,
                     "name": "TVOC",
@@ -74,11 +77,10 @@
                     "unit": null,
                     "uuid": "c6f9a729-1782-4da1-adc9-e88b7143e45c"
                 },
-                "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
-                "value": 2.0,
-                "raw_value": 2.0,
-                "prev_value": 2.0,
-                "prev_raw_value": 2.0
+                "value": 1588,
+                "prev_value": 1628,
+                "last_reading_at": "2020-01-05T01:07:37Z",
+                "tags": []
             },
             {
                 "id": 112,
@@ -88,6 +90,8 @@
                 "unit": "ppm",
                 "created_at": "2019-03-21T16:43:37Z",
                 "updated_at": "2019-03-21T16:43:37Z",
+                "uuid": "995343c9-12ac-40c0-b6b9-19699e524f86",
+                "default_key": "eco2",
                 "measurement": {
                     "id": 46,
                     "name": "eCO2",
@@ -95,20 +99,21 @@
                     "unit": null,
                     "uuid": "b6fee847-2bb6-4e1e-8e39-979612e2beb9"
                 },
-                "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
-                "value": 414.0,
-                "raw_value": 414.0,
-                "prev_value": 414.0,
-                "prev_raw_value": 414.0
+                "value": 2407,
+                "prev_value": 2462,
+                "last_reading_at": "2020-01-05T01:07:37Z",
+                "tags": []
             },
             {
                 "id": 14,
                 "ancestry": null,
-                "name": "BH1730FVC",
+                "name": "BH1730FVC - Light",
                 "description": "Digital Ambient Light Sensor",
-                "unit": "Lux",
+                "unit": "lux",
                 "created_at": "2015-02-02T18:24:56Z",
-                "updated_at": "2015-07-05T19:57:36Z",
+                "updated_at": "2021-05-07T16:23:50Z",
+                "uuid": "ac4234cf-d2b7-4cfa-8765-9f4477e2de5f",
+                "default_key": "light",
                 "measurement": {
                     "id": 3,
                     "name": "Light",
@@ -116,31 +121,32 @@
                     "unit": null,
                     "uuid": "50aa0431-86ac-4340-bf51-ad498ee35a3b"
                 },
-                "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
-                "value": 1152.0,
-                "raw_value": 1152.0,
-                "prev_value": 1152.0,
-                "prev_raw_value": 1152.0
+                "value": 3,
+                "prev_value": 2,
+                "last_reading_at": "2020-01-05T01:07:37Z",
+                "tags": []
             },
             {
                 "id": 10,
                 "ancestry": null,
-                "name": "Battery SCK 1.1",
+                "name": "Battery SCK",
                 "description": "Custom Circuit",
                 "unit": "%",
                 "created_at": "2015-02-02T18:18:00Z",
-                "updated_at": "2015-07-05T19:53:51Z",
+                "updated_at": "2020-12-11T16:12:40Z",
+                "uuid": "c9ff2784-53a7-4a84-b0fc-90ecc7e313f9",
+                "default_key": "bat",
                 "measurement": {
                     "id": 7,
                     "name": "battery",
                     "description": "The SCK remaining battery level in percentage.",
+                    "unit": null,
                     "uuid": "c5964926-c2d2-4714-98b5-18f84c6f95c1"
                 },
-                "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
-                "value": 76.0,
-                "raw_value": 76.0,
-                "prev_value": 76.0,
-                "prev_raw_value": 76.0
+                "value": 98,
+                "prev_value": 99,
+                "last_reading_at": "2020-01-05T01:07:37Z",
+                "tags": []
             },
             {
                 "id": 53,
@@ -150,147 +156,153 @@
                 "unit": "dBA",
                 "created_at": "2018-05-03T10:42:47Z",
                 "updated_at": "2018-05-03T10:42:54Z",
+                "uuid": "f508548e-3fd1-44aa-839b-9bd147168481",
+                "default_key": "noise_dba",
                 "measurement": {
                     "id": 4,
                     "name": "Noise Level",
                     "description": "dB's measure sound pressure difference between the average local pressure and the pressure in the sound wave.  A quiet library is below 40dB, your house is around 50dB and a diesel truck in your street 90dB.",
+                    "unit": null,
                     "uuid": "2841719f-658e-40df-a14a-74a86adc1410"
                 },
-                "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
-                "value": 43.93,
-                "raw_value": 43.93,
-                "prev_value": 43.93,
-                "prev_raw_value": 43.93
+                "value": 37.15,
+                "prev_value": 56.82,
+                "last_reading_at": "2020-01-05T01:07:37Z",
+                "tags": []
             },
             {
                 "id": 58,
                 "ancestry": "57",
-                "name": "MPL3115A2 - Barometric Pressure",
+                "name": "NXP MPL3115A2 - Barometric Pressure",
                 "description": "Digital Barometric Pressure Sensor",
-                "unit": "K Pa",
+                "unit": "kPa",
                 "created_at": "2018-05-03T10:49:17Z",
-                "updated_at": "2018-05-03T10:49:17Z",
+                "updated_at": "2023-07-14T16:52:14Z",
+                "uuid": "cadd2459-6559-4d92-aed1-ba04c557fed8",
+                "default_key": "bar",
                 "measurement": {
-                "id": 25,
+                    "id": 25,
                     "name": "Barometric Pressure",
                     "description": "Barometric pressure is the pressure within the atmosphere of Earth. In most circumstances atmospheric pressure is closely approximated by the hydrostatic pressure caused by the weight of air above the measurement point.",
+                    "unit": "NULL",
                     "uuid": "2a944e9d-073d-49ed-8dc7-e376495f283d"
                 },
-                "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
-                "value": 102.44,
-                "raw_value": 102.44,
-                "prev_value": 102.44,
-                "prev_raw_value": 102.44
+                "value": 100.84,
+                "prev_value": 100.84,
+                "last_reading_at": "2020-01-05T01:07:37Z",
+                "tags": []
             },
             {
                 "id": 89,
                 "ancestry": "86",
-                "name": "PMS5003_AVG-PM1",
+                "name": "Plantower PMS5003 - PM1.0",
                 "description": "Particle Matter PM 1",
                 "unit": "ug/m3",
                 "created_at": "2018-05-22T13:20:34Z",
-                "updated_at": "2018-05-22T13:20:34Z",
+                "updated_at": "2023-05-23T11:13:03Z",
+                "uuid": "a4b9efba-241f-446e-9cf2-918f25efd0c5",
+                "default_key": "pm_avg_1",
                 "measurement": {
                     "id": 27,
                     "name": "PM 1",
                     "description": "PM stands for particulate matter: the term for a mixture of solid particles and liquid droplets found in the air. Some particles, such as dust, dirt, soot, or smoke, are large or dark enough to be seen with the naked eye.",
+                    "unit": null,
                     "uuid": "9759c2fd-15d8-424b-adcc-d6efcf940f6e"
                 },
-                "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
-                "value": 3.0,
-                "raw_value": 3.0,
-                "prev_value": 3.0,
-                "prev_raw_value": 3.0
+                "value": 3,
+                "prev_value": 3,
+                "last_reading_at": "2020-01-05T01:07:37Z",
+                "tags": []
             },
             {
                 "id": 88,
                 "ancestry": "86",
-                "name": "PMS5003_AVG-PM10",
+                "name": "Plantower PMS5003 - PM10",
                 "description": "Particle Matter PM 10",
                 "unit": "ug/m3",
                 "created_at": "2018-05-22T13:20:34Z",
-                "updated_at": "2018-05-22T13:20:34Z",
+                "updated_at": "2023-05-23T11:12:06Z",
+                "uuid": "c2072a22-4d81-4d7c-a38c-af9458b8f309",
+                "default_key": "pm_avg_10",
                 "measurement": {
                     "id": 13,
                     "name": "PM 10",
                     "description": "PM stands for particulate matter: the term for a mixture of solid particles and liquid droplets found in the air. Some particles, such as dust, dirt, soot, or smoke, are large or dark enough to be seen with the naked eye.",
+                    "unit": null,
                     "uuid": "30e5b614-ab7e-46bc-b6f7-fa9a30926ce9"
                 },
-                "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
-                "value": 5.0,
-                "raw_value": 5.0,
-                "prev_value": 5.0,
-                "prev_raw_value": 5.0
+                "value": 7,
+                "prev_value": 6,
+                "last_reading_at": "2020-01-05T01:07:37Z",
+                "tags": []
             },
             {
                 "id": 87,
                 "ancestry": "86",
-                "name": "PMS5003_AVG-PM2.5",
+                "name": "Plantower PMS5003 - PM2.5",
                 "description": "Particle Matter PM 2.5",
                 "unit": "ug/m3",
                 "created_at": "2018-05-22T13:20:34Z",
-                "updated_at": "2018-05-22T13:20:34Z",
+                "updated_at": "2023-05-23T11:13:07Z",
+                "uuid": "9ee89ac2-0482-46dd-905f-0b7a1bb12c55",
+                "default_key": "pm_avg_2.5",
                 "measurement": {
                     "id": 14,
                     "name": "PM 2.5",
                     "description": "PM stands for particulate matter: the term for a mixture of solid particles and liquid droplets found in the air. Some particles, such as dust, dirt, soot, or smoke, are large or dark enough to be seen with the naked eye.",
+                    "unit": null,
                     "uuid": "c8ecda46-c430-4cbc-9ad4-5ea8a07c5820"
                 },
-                "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
-                "value": 5.0,
-                "raw_value": 5.0,
-                "prev_value": 5.0,
-                "prev_raw_value": 5.0
+                "value": 6,
+                "prev_value": 6,
+                "last_reading_at": "2020-01-05T01:07:37Z",
+                "tags": []
             },
             {
                 "id": 56,
                 "ancestry": "54",
-                "name": "SHT31 - Humidity",
+                "name": "Sensirion SHT31 - Humidity",
                 "description": "Humidity",
                 "unit": "%",
                 "created_at": "2018-05-03T10:47:17Z",
-                "updated_at": "2018-05-03T10:47:17Z",
-                "measurement": {
+                "updated_at": "2023-07-14T17:16:44Z",
+                "uuid": "b6543356-0066-4bea-8ad2-687e282f9c20",
+                "default_key": "h",
+                "measurement":
+                {
                     "id": 2,
                     "name": "Relative Humidity",
                     "description": "Relative humidity is a measure of the amount of moisture in the air relative to the total amount of moisture the air can hold. For instance, if the relative humidity was 50%, then the air is only half saturated with moisture.",
+                    "unit": null,
                     "uuid": "9cbbd396-5bd3-44be-adc0-7ffba778072d"
                 },
-                "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
-                "value": 64.0,
-                "raw_value": 64.0,
-                "prev_value": 64.0,
-                "prev_raw_value": 64.0
+                "value": 58.2,
+                "prev_value": 57.92,
+                "last_reading_at": "2020-01-05T01:07:37Z",
+                "tags": []
             },
             {
                 "id": 55,
                 "ancestry": "54",
-                "name": "SHT31 - Temperature",
+                "name": "Sensirion SHT31 - Temperature",
                 "description": "Temperature",
                 "unit": "ºC",
                 "created_at": "2018-05-03T10:47:15Z",
-                "updated_at": "2018-05-03T10:47:15Z",
+                "updated_at": "2023-07-14T17:16:19Z",
+                "uuid": "384e46a2-80dd-481e-a9fc-cfbd512f9f43",
+                "default_key": "t",
                 "measurement": {
                     "id": 1,
                     "name": "Air Temperature",
                     "description": "Air temperature is a measure of how hot or cold the air is. It is the most commonly measured weather parameter. Air temperature is dependent on the amount and strength of the sunlight hitting the earth, and atmospheric conditions, such as cloud cover and humidity, which trap heat.",
+                    "unit": null,
                     "uuid": "b3f44b63-0a17-4d84-bbf1-4c17764b7eae"
                 },
-                "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
-                "value": 22.39,
-                "raw_value": 22.39,
-                "prev_value": 22.39,
-                "prev_raw_value": 22.39
+                "value": 23.49,
+                "prev_value": 23.57,
+                "last_reading_at": "2020-01-05T01:07:37Z",
+                "tags": []
             }
         ]
-    },
-    "kit": {
-        "id": 26,
-        "uuid": "deadbeed-dead-beef-beef-deadbeeddead",
-        "slug": "sck:2,1",
-        "name": "SCK 2.1",
-        "description": "Smart Citizen Kit 2.1 with Urban Sensor Board",
-        "created_at": "2019-03-21T17:02:46Z",
-        "updated_at": "2019-03-21T17:02:46Z"
     }
 }

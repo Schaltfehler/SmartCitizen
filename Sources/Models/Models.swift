@@ -7,11 +7,33 @@ public struct Device: Codable, Hashable {
     public let name: String
     public let description: String?
     public let state: String
+
     public let systemTags: [String]
     public let userTags: [String]
+
     public let lastReadingAt: Date?
+
+    public let location: Location
+    public let hardware: Hardware
     public let owner: Owner
+
     public let data: DataObject
+
+    public struct Location: Codable, Hashable {
+        public let exposure: String? // "indoor"
+        public let latitude: Double?
+        public let longitude: Double?
+
+        public let city: String?
+        public let country: String?
+    }
+
+    public struct Hardware: Codable, Hashable {
+        let name: String
+        let type: String
+        let version: String
+        let slug: String
+    }
 
     public struct Owner: Codable, Hashable {
         public let id: Int
@@ -22,17 +44,7 @@ public struct Device: Codable, Hashable {
     public struct DataObject: Codable, Hashable {
         public let recordedAt: Date?
         public let addedAt: Date?
-        public let location: Location?
         public let sensors: Array<Sensor>
-
-        public struct Location: Codable, Hashable {
-            public let exposure: String? // "indoor"
-            public let latitude: Double?
-            public let longitude: Double?
-
-            public let city: String?
-            public let country: String?
-        }
 
         public struct Sensor: Codable, Hashable {
             public let id: Int

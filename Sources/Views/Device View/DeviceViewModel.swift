@@ -141,7 +141,7 @@ extension DeviceViewModel {
 
         self.init(id: device.id,
                   ownerName: device.owner.username,
-                  cityName: device.data.location?.city ?? "?",
+                  cityName: device.location.city ?? "?",
                   name: device.name,
                   description: device.description ?? "-",
                   state: device.state,

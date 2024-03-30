@@ -23,9 +23,9 @@ public final class DeviceFetcher: ObservableObject {
             .eraseToAnyPublisher()
 
         let deviceRequest = APIRequestBuilder.device(withId: deviceID)
-        let devicePublisher = apiClient.publisher(for: deviceRequest)
+        let devicePublisher: AnyPublisher<Device, Error> = apiClient.publisher(for: deviceRequest)
 
-        let requestPublisher: AnyPublisher<Device, Error> = devicePublisher
+        let requestPublisher = devicePublisher
             .handleEvents(
                 receiveOutput: { [unowned self] in self.cache.setEntry(key: $0.id, value: $0) }
             )
